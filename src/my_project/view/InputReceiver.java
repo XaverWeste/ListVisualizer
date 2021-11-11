@@ -27,7 +27,6 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void keyPressed(int key) {
-
     }
 
     @Override
@@ -62,5 +61,11 @@ public class InputReceiver implements Interactable {
     @Override
     public void mousePressed(MouseEvent e) {
 
+    }
+
+    public void update(double dt){
+        if(viewController.isKeyDown(1)){
+
+        }
     }
 }

@@ -1,44 +1,17 @@
 package my_project.model;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.GraphicalObject;
-import KAGO_framework.view.DrawTool;
 
 /**
  * Repräsentiert eine Kugel (einen Kreis), der in eine Schlange eingefügt werden soll. Dabei muss jeder QueueBall immer
  * seinen Vorgänger kennen, damit er zu ihm Abstand halten kann.
  */
-public class QueueBall extends GraphicalObject {
+public class QueueBall extends Ball {
 
-    private ViewController viewController;
-    private QueueBall previousQueueBall; // Vorgänger des QueueBalls
-    private boolean arrived; // hat der QueueBall den Anfang der Schlange erreicht?
-    private boolean deleted; // wurde der QueueBall aus der Schlange gelöscht?
-
-    /**
-     * Erzeugt einen neuen QueueBall
-     * @param x Startposition x
-     * @param y Startposition y
-     * @param previousQueueBall der vorhergehende QueueBall (kann auch null sein)
-     * @param viewController das ViewController-Objekt des Frameworks
-     */
-    public QueueBall(double x, double y, QueueBall previousQueueBall, ViewController viewController){
-        this.x = x;
-        this.y = y;
-        this.previousQueueBall = previousQueueBall;
-        this.viewController = viewController;
-        arrived = false;
-        deleted = false;
-        viewController.draw(this);
-    }
-
-
-    /**
-     * Selbsterklärend: zeichnet den QueueBall. Wird vom Framework aufgerufen.
-     */
-    @Override
-    public void draw(DrawTool drawTool) {
-        drawTool.drawCircle(x,y,20);
+    protected QueueBall previousQueueBall;
+    public QueueBall(QueueBall previousQueueBall){
+        super(x,y,);
+        this.previousQueueBall
     }
 
     /**
@@ -58,15 +31,5 @@ public class QueueBall extends GraphicalObject {
         }
     }
 
-    /**
-     * Versucht das Objekt auf deleted zu setzen. Dies bewirkt, dass es sich aus dem Fenster heraus bewegt.
-     * @return true, falls das Löschen geklappt hat, sonst false
-     */
-    public boolean tryToDelete(){
-        if(arrived){
-            deleted = true;
-            return deleted;
-        }
-        return false;
-    }
+
 }
