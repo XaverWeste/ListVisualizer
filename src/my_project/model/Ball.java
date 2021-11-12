@@ -9,16 +9,10 @@ public class Ball extends GraphicalObject {
     protected boolean arrived;
     protected boolean deleted;
     protected ViewController viewController;
-    protected QueueBall previousQueueBall;
 
-    public Ball(double x, double y, QueueBall previousQueueBall, ViewController viewController){
-        this.x = x;
-        this.y = y;
-        this.previousQueueBall = previousQueueBall;
-        this.viewController = viewController;
+    public Ball(){
         arrived = false;
         deleted = false;
-        viewController.draw(this);
     }
 
     @Override

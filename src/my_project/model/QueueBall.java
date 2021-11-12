@@ -9,9 +9,13 @@ import KAGO_framework.control.ViewController;
 public class QueueBall extends Ball {
 
     protected QueueBall previousQueueBall;
-    public QueueBall(QueueBall previousQueueBall){
-        super(x,y,);
-        this.previousQueueBall
+
+    public QueueBall(double x, double y,QueueBall previousQueueBall, ViewController viewController){
+        this.previousQueueBall=previousQueueBall;
+        this.x = x;
+        this.y = y;
+        this.viewController = viewController;
+        viewController.draw(this);
     }
 
     /**

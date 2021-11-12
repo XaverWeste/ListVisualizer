@@ -3,6 +3,8 @@ package my_project.view;
 import KAGO_framework.control.Interactable;
 import KAGO_framework.control.ViewController;
 import my_project.control.ProgramController;
+
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 /**
@@ -64,7 +66,7 @@ public class InputReceiver implements Interactable {
     }
 
     public void update(double dt){
-        if(viewController.isKeyDown(1)){
+        if(viewController.isKeyDown(KeyEvent.VK_S)){
 
         }
     }

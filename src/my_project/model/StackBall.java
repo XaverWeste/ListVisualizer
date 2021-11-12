@@ -5,15 +5,13 @@ import KAGO_framework.control.ViewController;
 public class StackBall extends Ball {
 
     private ViewController viewController;
-    private QueueBall previousQueueBall;
+    private StackBall previousStackBall;
 
-    public StackBall(double x, double y, QueueBall previousQueueBall, ViewController viewController){
+    public StackBall(double x, double y, StackBall previousStackBall, ViewController viewController){
         this.x=x;
         this.y = y;
-        this.previousQueueBall = previousQueueBall;
+        this.previousStackBall = previousStackBall;
         this.viewController = viewController;
-        arrived = false;
-        deleted = false;
         viewController.draw(this);
     }
 
@@ -21,7 +19,7 @@ public class StackBall extends Ball {
     @Override
     public void update(double dt){
         if(!arrived){
-            if(previousQueueBall == null || y < previousQueueBall.getY()+50) y += 100*dt;
+            if(previousStackBall == null || y < previousStackBall.getY()+50) y += 100*dt;
             if (y > 950) arrived = true;
         }
         if(deleted){
