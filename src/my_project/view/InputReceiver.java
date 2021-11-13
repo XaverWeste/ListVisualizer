@@ -34,7 +34,7 @@ public class InputReceiver implements Interactable {
     @Override
     public void keyReleased(int key) {
         if(key==40){
-            programController.addBall("Stack");
+            programController.addBallToStack();
         }else if(key==38){
             programController.deleteBallFromStack();
         }
@@ -43,7 +43,7 @@ public class InputReceiver implements Interactable {
     @Override
     public void mouseReleased(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON1){ // falls die linke Maustaste geklickt wurde...
-            programController.addBall("Queue");
+            programController.addBallToQueue();
         } else { // falls eine andere Maustaste geklickt wurde
             programController.deleteBallFromQueue();
         }
