@@ -4,7 +4,7 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class Ball extends GraphicalObject {
+public abstract class Ball extends GraphicalObject {
 
     protected boolean arrived;
     protected boolean deleted;

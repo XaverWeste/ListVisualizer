@@ -33,7 +33,11 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void keyReleased(int key) {
-
+        if(key==40){
+            programController.addBallToStack();
+        }else if(key==38){
+            programController.deleteBallFromStack();
+        }
     }
 
     @Override
