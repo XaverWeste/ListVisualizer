@@ -50,42 +50,35 @@ public class ProgramController {
         lastBallinStack = null;
     }
 
-    public void addBallToQueue(){
-        QueueBall newQueueBall = new QueueBall(650,50,lastBallinQueue,viewController);
-        ballQueue.enqueue(newQueueBall);
-        lastBallinQueue = newQueueBall;
-    }
-
-    public void deleteBallFromQueue(){
-        if(!ballQueue.isEmpty()){
-            if(ballQueue.front().tryToDelete()) ballQueue.dequeue();
-        }
-    }
-
-    public void addBallToStack(){
-        StackBall newStackBall = new StackBall(50,-50,lastBallinStack,viewController);
-        ballStack.push(newStackBall);
-        lastBallinStack = newStackBall;
-    }
-
-    public void deleteBallFromStack(){
-        if(!ballStack.isEmpty()){
-            if(ballStack.top().tryToDelete()) ballStack.pop();
-        }
-    }
-
     public void addBall(String to){
         switch (to){
-            case "Stack":{
-                StackBall newStackBall = new StackBall(50, -50, lastBallinStack, viewController);
+            case "Stack":
+                StackBall newStackBall = new StackBall(50,-50,lastBallinStack,viewController);
                 ballStack.push(newStackBall);
                 lastBallinStack = newStackBall;
+                System.out.println("1");
+                break;
+            case "Queue":
+                QueueBall newQueueBall = new QueueBall(650,50,lastBallinQueue,viewController);
+                ballQueue.enqueue(newQueueBall);
+                lastBallinQueue = newQueueBall;
+                System.out.println("2");
+                break;
+        }
+    }
+
+    public void deleteBall(String from){
+        switch (from){
+            case "Stack":{
+                if(!ballStack.isEmpty()){
+                    if(ballStack.top().tryToDelete()) ballStack.pop();
+                }
                 break;
             }
             case "Queue": {
-                QueueBall newQueueBall = new QueueBall(650, 50, lastBallinQueue, viewController);
-                ballQueue.enqueue(newQueueBall);
-                lastBallinQueue = newQueueBall;
+                if(!ballQueue.isEmpty()){
+                    if(ballQueue.front().tryToDelete()) ballQueue.dequeue();
+                }
             }
         }
     }
