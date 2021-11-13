@@ -74,6 +74,21 @@ public class ProgramController {
         }
     }
 
+    public void addBall(String to){
+        switch (to){
+            case "Stack":{
+                StackBall newStackBall = new StackBall(50, -50, lastBallinStack, viewController);
+                ballStack.push(newStackBall);
+                lastBallinStack = newStackBall;
+            }
+            case "Queue": {
+                QueueBall newQueueBall = new QueueBall(650, 50, lastBallinQueue, viewController);
+                ballQueue.enqueue(newQueueBall);
+                lastBallinQueue = newQueueBall;
+            }
+        }
+    }
+
     /**
      * Aufruf bei Mausklick
      * @param e das Objekt enthält alle Informationen zum Klick
