@@ -69,7 +69,9 @@ public class ProgramController {
         switch (from){
             case "Stack":{
                 if(!ballStack.isEmpty()){
+                    StackBall newTop = ballStack.top();
                     if(ballStack.top().tryToDelete()) ballStack.pop();
+                    lastBallinStack = newTop;
                 }
                 break;
             }
