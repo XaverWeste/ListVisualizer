@@ -15,6 +15,6 @@ public class Config {
     public final static int WINDOW_HEIGHT = 1000+29;   // Effektive Höhe ist etwa 29 Pixel geringer (Titelleiste wird mitgezählt)
 
     // Weitere Optionen für das Projekt
-    public final static boolean useSound = true;
+    public final static boolean useSound = false;
 
 }
