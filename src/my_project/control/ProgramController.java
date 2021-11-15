@@ -73,15 +73,14 @@ public class ProgramController {
 
     public void deleteBall(String from){
         switch (from){
-            case "Stack":{
+            case "Stack" -> {
                 if(!ballStack.isEmpty()){
                     StackBall newTop = ballStack.top();
                     if(ballStack.top().tryToDelete()) ballStack.pop();
                     lastBallinStack = ballStack.top();
                 }
-                break;
             }
-            case "Queue": {
+            case "Queue" -> {
                 if(!ballQueue.isEmpty()){
                     if(ballQueue.front().tryToDelete()) ballQueue.dequeue();
                 }
