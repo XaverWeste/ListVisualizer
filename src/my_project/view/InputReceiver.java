@@ -35,8 +35,9 @@ public class InputReceiver implements Interactable {
     public void keyReleased(int key) {
         if(key==40){
             programController.addBall("Stack");
-        }else if(key==38){
+        }else {
             programController.deleteBall("Stack");
+            System.out.println(key);
         }
     }
 

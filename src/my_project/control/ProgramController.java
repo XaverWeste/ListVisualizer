@@ -53,9 +53,15 @@ public class ProgramController {
     public void addBall(String to){
         switch (to){
             case "Stack" -> {
-                StackBall newStackBall = new StackBall(50, -50, lastBallinStack, viewController);
-                ballStack.push(newStackBall);
-                lastBallinStack = newStackBall;
+                if(lastBallinStack!=null&&lastBallinStack.getY()>100) {
+                    StackBall newStackBall = new StackBall(50, -50, ballStack.top(), viewController);
+                    ballStack.push(newStackBall);
+                    lastBallinStack = newStackBall;
+                }else if(lastBallinStack==null){
+                    StackBall newStackBall = new StackBall(50, -50, ballStack.top(), viewController);
+                    ballStack.push(newStackBall);
+                    lastBallinStack = newStackBall;
+                }
             }
             case "Queue" -> {
                 QueueBall newQueueBall = new QueueBall(650, 50, lastBallinQueue, viewController);
@@ -71,7 +77,7 @@ public class ProgramController {
                 if(!ballStack.isEmpty()){
                     StackBall newTop = ballStack.top();
                     if(ballStack.top().tryToDelete()) ballStack.pop();
-                    lastBallinStack = newTop;
+                    lastBallinStack = ballStack.top();
                 }
                 break;
             }
