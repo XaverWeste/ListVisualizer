@@ -1,10 +1,12 @@
 package my_project.model;
 
 import KAGO_framework.control.ViewController;
+import KAGO_framework.view.DrawTool;
 
 public class StackBall extends Ball {
 
     private StackBall previousStackBall;
+    private boolean isFilled=false;
 
     public StackBall(double x, double y, StackBall previousStackBall, ViewController viewController){
         this.x=x;
@@ -14,7 +16,18 @@ public class StackBall extends Ball {
         viewController.draw(this);
     }
 
+    public void draw(DrawTool drawTool){
+        super.draw(drawTool);
+        if(isFilled) drawTool.drawFilledCircle(x,y,20);
+    }
 
+    public void changeFilled(){
+        if(isFilled) {
+            isFilled = false;
+        }else{
+            isFilled = true;
+        }
+    }
 
     @Override
     public void update(double dt){

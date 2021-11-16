@@ -4,6 +4,7 @@ import KAGO_framework.control.Interactable;
 import KAGO_framework.control.ViewController;
 import my_project.control.ProgramController;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 /**
@@ -32,10 +33,12 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void keyReleased(int key) {
-        if(key==40){
+        if(key== KeyEvent.VK_DOWN){
             programController.addBall("Stack");
-        }else if(key==38){
+        }else if(key==KeyEvent.VK_LEFT){
             programController.deleteBall("Stack");
+        }else if(key==KeyEvent.VK_SPACE){
+            programController.changeFilled();
         }
     }
 
