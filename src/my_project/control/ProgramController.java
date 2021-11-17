@@ -26,6 +26,7 @@ public class ProgramController {
     private QueueBall lastBallinQueue;
     private Stack<StackBall> ballStack;
     private List<ListBall> ballList;
+    private ListBall lastBallInList;
 
     /**
      * Konstruktor
@@ -50,6 +51,8 @@ public class ProgramController {
         lastBallinQueue = null; // die letzte Kugel muss für die Animation gemerkt werden
         ballStack = new Stack<>();
         ballList = new List<>();
+        ballList.toFirst();
+        lastBallInList = null;
     }
 
     public void addBall(String to){
@@ -62,13 +65,14 @@ public class ProgramController {
                 }
             }
             case "Queue" -> {
-                QueueBall newQueueBall = new QueueBall(650, 50, lastBallinQueue, viewController);
+                QueueBall newQueueBall = new QueueBall(850, 50, lastBallinQueue, viewController);
                 ballQueue.enqueue(newQueueBall);
                 lastBallinQueue = newQueueBall;
             }
             case "List" -> {
-                ListBall newListBall = new ListBall(ballList,viewController);
+                ListBall newListBall = new ListBall(lastBallInList,viewController);
                 ballList.append(newListBall);
+                lastBallInList = newListBall;
             }
         }
     }
@@ -98,7 +102,7 @@ public class ProgramController {
             }
             case "List" -> {
                 if(!ballList.isEmpty()){
-                    if(ballList.getContent().tryToDelete()) ballList.remove();
+                    //if(ballList.getContent().tryToDelete()) ballList.remove();
                 }
             }
         }

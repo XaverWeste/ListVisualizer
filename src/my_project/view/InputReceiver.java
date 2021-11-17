@@ -43,6 +43,12 @@ public class InputReceiver implements Interactable {
             case KeyEvent.VK_SPACE -> {
                 programController.changeFilled();
             }
+            case KeyEvent.VK_A -> {
+                programController.addBall("List");
+            }
+            case KeyEvent.VK_S -> {
+                programController.deleteBall("List");
+            }
         }
     }
 
