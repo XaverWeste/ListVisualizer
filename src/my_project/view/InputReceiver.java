@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
  */
 public class InputReceiver implements Interactable {
 
-    private ProgramController programController;
+    private final ProgramController programController;
     private ViewController viewController;
 
     /**
@@ -48,6 +48,15 @@ public class InputReceiver implements Interactable {
             }
             case KeyEvent.VK_S -> {
                 programController.deleteBall("List");
+            }
+            case KeyEvent.VK_R -> {
+                programController.setColor("r");
+            }
+            case KeyEvent.VK_G -> {
+                programController.setColor("g");
+            }
+            case KeyEvent.VK_B -> {
+                programController.setColor("b");
             }
         }
     }

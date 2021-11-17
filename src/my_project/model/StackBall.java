@@ -18,7 +18,7 @@ public class StackBall extends Ball {
 
     public void draw(DrawTool drawTool){
         super.draw(drawTool);
-        if(isFilled) drawTool.drawFilledCircle(x,y,20);
+        if(isFilled) drawTool.drawFilledCircle(x,y,radius);
     }
 
     public void changeFilled(){

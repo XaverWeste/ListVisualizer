@@ -13,11 +13,12 @@ public abstract class Ball extends GraphicalObject {
     public Ball(){
         arrived = false;
         deleted = false;
+        radius = 20;
     }
 
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.drawCircle(x,y,20);
+        drawTool.drawCircle(x,y,radius);
     }
 
     public boolean tryToDelete(){

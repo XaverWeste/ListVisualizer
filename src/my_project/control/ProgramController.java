@@ -102,8 +102,22 @@ public class ProgramController {
             }
             case "List" -> {
                 if(!ballList.isEmpty()){
-                    //if(ballList.getContent().tryToDelete()) ballList.remove();
+                    if(ballList.getContent().tryToDelete()) ballList.remove();
                 }
+            }
+        }
+    }
+
+    public void setColor(String color){
+        switch (color){
+            case "r" -> {
+                ballList.getContent().setR(255);
+            }
+            case "g" -> {
+                ballList.getContent().setG(255);
+            }
+            case "b" -> {
+                ballList.getContent().setB(255);
             }
         }
     }
