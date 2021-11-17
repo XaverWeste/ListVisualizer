@@ -5,11 +5,11 @@ import KAGO_framework.view.DrawTool;
 
 public class StackBall extends Ball {
 
-    private StackBall previousStackBall;
+    private final StackBall previousStackBall;
     private boolean isFilled=false;
 
-    public StackBall(double x, double y, StackBall previousStackBall, ViewController viewController){
-        this.x=x;
+    public StackBall(double y, StackBall previousStackBall, ViewController viewController){
+        this.x=50;
         this.y = y;
         this.previousStackBall = previousStackBall;
         this.viewController = viewController;
@@ -22,18 +22,14 @@ public class StackBall extends Ball {
     }
 
     public void changeFilled(){
-        if(isFilled) {
-            isFilled = false;
-        }else{
-            isFilled = true;
-        }
+        isFilled = !isFilled;
     }
 
     @Override
     public void update(double dt){
         if(!arrived){
             if(previousStackBall == null || y < previousStackBall.getY()-50) y += 100*dt;
-            if (y > 950||previousStackBall!=null&&previousStackBall.arrived&&y >= previousStackBall.getY()-49) arrived = true;
+            if (y > 850||previousStackBall!=null&&previousStackBall.arrived&&y >= previousStackBall.getY()-49) arrived = true;
         }
         if(deleted){
             y -= 200*dt;

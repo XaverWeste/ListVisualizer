@@ -33,12 +33,16 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void keyReleased(int key) {
-        if(key== KeyEvent.VK_DOWN){
-            programController.addBall("Stack");
-        }else if(key==KeyEvent.VK_LEFT){
-            programController.deleteBall("Stack");
-        }else if(key==KeyEvent.VK_SPACE){
-            programController.changeFilled();
+        switch (key){
+            case KeyEvent.VK_DOWN -> {
+                programController.addBall("Stack");
+            }
+            case KeyEvent.VK_UP -> {
+                programController.deleteBall("Stack");
+            }
+            case KeyEvent.VK_SPACE -> {
+                programController.changeFilled();
+            }
         }
     }
 

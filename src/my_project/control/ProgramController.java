@@ -1,8 +1,10 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
+import KAGO_framework.model.abitur.datenstrukturen.List;
 import KAGO_framework.model.abitur.datenstrukturen.Queue;
 import KAGO_framework.model.abitur.datenstrukturen.Stack;
+import my_project.model.ListBall;
 import my_project.model.QueueBall;
 import my_project.model.StackBall;
 import my_project.view.InputReceiver;
@@ -23,6 +25,7 @@ public class ProgramController {
     private Queue<QueueBall> ballQueue;
     private QueueBall lastBallinQueue;
     private Stack<StackBall> ballStack;
+    private List<ListBall> ballList;
 
     /**
      * Konstruktor
@@ -46,6 +49,7 @@ public class ProgramController {
         ballQueue = new Queue<>();
         lastBallinQueue = null; // die letzte Kugel muss für die Animation gemerkt werden
         ballStack = new Stack<>();
+        ballList = new List<>();
     }
 
     public void addBall(String to){
@@ -62,11 +66,15 @@ public class ProgramController {
                 ballQueue.enqueue(newQueueBall);
                 lastBallinQueue = newQueueBall;
             }
+            case "List" -> {
+                ListBall newListBall = new ListBall(ballList,viewController);
+                ballList.append(newListBall);
+            }
         }
     }
 
     private void addStackBall() {
-        StackBall newStackBall = new StackBall(50, -50, ballStack.top(), viewController);
+        StackBall newStackBall = new StackBall( -50, ballStack.top(), viewController);
         ballStack.push(newStackBall);
     }
 
@@ -86,6 +94,11 @@ public class ProgramController {
             case "Queue" -> {
                 if(!ballQueue.isEmpty()){
                     if(ballQueue.front().tryToDelete()) ballQueue.dequeue();
+                }
+            }
+            case "List" -> {
+                if(!ballList.isEmpty()){
+                    if(ballList.getContent().tryToDelete()) ballList.remove();
                 }
             }
         }
