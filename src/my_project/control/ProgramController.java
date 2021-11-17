@@ -19,11 +19,10 @@ public class ProgramController {
 
 
     // Referenzen
-    private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
+    private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Queue<QueueBall> ballQueue;
     private QueueBall lastBallinQueue;
     private Stack<StackBall> ballStack;
-    private StackBall lastBallinStack;
 
     /**
      * Konstruktor
@@ -47,15 +46,14 @@ public class ProgramController {
         ballQueue = new Queue<>();
         lastBallinQueue = null; // die letzte Kugel muss für die Animation gemerkt werden
         ballStack = new Stack<>();
-        lastBallinStack = null;
     }
 
     public void addBall(String to){
         switch (to){
             case "Stack" -> {
-                if(lastBallinStack!=null&&lastBallinStack.getY()>100) {
+                if(!ballStack.isEmpty()&&ballStack.top().getY()>100) {
                     addStackBall();
-                }else if(lastBallinStack==null){
+                }else if(ballStack.isEmpty()){
                     addStackBall();
                 }
             }
@@ -70,7 +68,6 @@ public class ProgramController {
     private void addStackBall() {
         StackBall newStackBall = new StackBall(50, -50, ballStack.top(), viewController);
         ballStack.push(newStackBall);
-        lastBallinStack = newStackBall;
     }
 
     public void changeFilled(){
@@ -84,7 +81,6 @@ public class ProgramController {
                 if(!ballStack.isEmpty()){
                     StackBall newTop = ballStack.top();
                     if(ballStack.top().tryToDelete()) ballStack.pop();
-                    lastBallinStack = ballStack.top();
                 }
             }
             case "Queue" -> {
