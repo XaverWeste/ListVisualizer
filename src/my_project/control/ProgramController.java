@@ -7,6 +7,7 @@ import KAGO_framework.model.abitur.datenstrukturen.Stack;
 import my_project.model.ListBall;
 import my_project.model.QueueBall;
 import my_project.model.StackBall;
+import my_project.model.TwoDimesionalArray;
 import my_project.view.InputReceiver;
 
 import java.awt.event.MouseEvent;
@@ -27,6 +28,7 @@ public class ProgramController {
     private Stack<StackBall> ballStack;
     private List<ListBall> ballList;
     private ListBall lastBallInList;
+    private TwoDimesionalArray array;
 
     /**
      * Konstruktor
@@ -53,6 +55,7 @@ public class ProgramController {
         ballList = new List<>();
         ballList.toFirst();
         lastBallInList = null;
+        //array = new TwoDimesionalArray(viewController); //ToDo
     }
 
     public void addBall(String to){

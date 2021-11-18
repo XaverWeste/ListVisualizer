@@ -67,20 +67,24 @@ public class InputReceiver implements Interactable {
             case KeyEvent.VK_W -> {
                 programController.addBall("current");
             }
+            case KeyEvent.VK_Y -> {
+                programController.addBall("Queue");
+            }
+            case KeyEvent.VK_X -> {
+                programController.deleteBall("Queue");
+            }
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){ // falls die linke Maustaste geklickt wurde...
-            programController.addBall("Queue");
-        } else { // falls eine andere Maustaste geklickt wurde
-            programController.deleteBall("Queue");
-        }
+
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        double x=e.getX();
+        double y=e.getY();
 
     }
 
