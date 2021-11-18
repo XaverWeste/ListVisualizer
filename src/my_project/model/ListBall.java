@@ -58,6 +58,7 @@ public class ListBall extends Ball{
         if(deleted){
             if(isOnPointer){
                 if(next!=null) next.changePointer();
+                System.out.print('a');
             }
             y += 200*dt;
             if(y > 1100) viewController.removeDrawable(this);

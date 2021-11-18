@@ -77,7 +77,7 @@ public class ProgramController {
                 }else {
                     ListBall previous = lastBallInList;
                     addListBall();
-                    lastBallInList.setPrevious(previous);
+                    previous.setNext(lastBallInList);
                 }
             }
         }
@@ -113,7 +113,7 @@ public class ProgramController {
                 }
             }
             case "List" -> {
-                if(!ballList.isEmpty()){
+                if(!ballList.isEmpty()&& ballList.hasAccess()){
                     if(ballList.getContent().tryToDelete()) ballList.remove();
                 }
             }
@@ -143,7 +143,11 @@ public class ProgramController {
                 ballList.toFirst();
             }
             case "next" -> {
-                ballList.next();
+                if(ballList.hasAccess()) {
+                    ballList.next();
+                }else{
+                    ballList.toFirst();
+                }
             }
         }
         if(ballList.getContent()!=null)ballList.getContent().changePointer();
