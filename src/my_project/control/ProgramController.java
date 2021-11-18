@@ -81,18 +81,18 @@ public class ProgramController {
                 }
             }
             case "current" -> {
-                ListBall newListBall = new ListBall(ballList.getContent().getPrevious(),viewController);
+                ListBall newListBall = new ListBall(ballList.getContent().getX(),ballList.getContent().getPrevious(),viewController);
+                newListBall.setY(1000);
                 newListBall.setNext(ballList.getContent());
                 ballList.getContent().setPrevious(newListBall);
                 newListBall.getPrevious().setNext(newListBall);
                 ballList.insert(newListBall);
-                newListBall.setColorBlack();
             }
         }
     }
 
     private void addListBall() {
-        ListBall newListBall = new ListBall(lastBallInList,viewController);
+        ListBall newListBall = new ListBall(850,lastBallInList,viewController);
         ballList.append(newListBall);
         lastBallInList = newListBall;
     }
@@ -111,7 +111,6 @@ public class ProgramController {
         switch (from){
             case "Stack" -> {
                 if(!ballStack.isEmpty()){
-                    StackBall newTop = ballStack.top();
                     if(ballStack.top().tryToDelete()) ballStack.pop();
                 }
             }

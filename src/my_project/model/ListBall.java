@@ -12,8 +12,8 @@ public class ListBall extends Ball{
     private int r,g,b;
     private boolean isOnPointer;
 
-    public ListBall(ListBall previousBall, ViewController viewController){
-        x=850;
+    public ListBall(double x,ListBall previousBall, ViewController viewController){
+        this.x=x;
         y=950;
         previous=previousBall;
         this.viewController=viewController;
@@ -58,9 +58,10 @@ public class ListBall extends Ball{
 
     @Override
     public void update(double dt){
+        if(y>950) y-=50*dt;
         if(!arrived){
             if(previous == null || x > previous.getX()+50) x -= 100*dt;
-            if(previous!=null&&previous.getX()>x+50) x += 100*dt;
+            if(previous!=null&&previous.getX()>x-50) x += 100*dt;
             if (x < 50) arrived = true;
         }
         if(deleted){
