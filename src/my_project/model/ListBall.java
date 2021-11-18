@@ -10,6 +10,7 @@ public class ListBall extends Ball{
     private ListBall previous;
     private ListBall next=null;
     private int r,g,b;
+    private boolean isOnPointer;
 
     public ListBall(ListBall previousBall, ViewController viewController){
         x=850;
@@ -18,19 +19,35 @@ public class ListBall extends Ball{
         this.viewController=viewController;
         viewController.draw(this);
         r=b=g=255;
+        isOnPointer=false;
     }
 
     public void draw(DrawTool drawTool){
+        if(isOnPointer){
+            drawTool.setCurrentColor(150,150,0,255);
+            drawTool.drawFilledCircle(x,y,radius+5);
+        }
         drawTool.setCurrentColor(r,g,b,255);
-        drawTool.drawFilledCircle(x,y,radius-1);
+        drawTool.drawFilledCircle(x,y,radius);
         super.draw(drawTool);
     }
 
-    public void setPrevious(ListBall newPrevius){ previous=newPrevius; }
+    public void setPrevious(ListBall newPrevious){ previous=newPrevious; }
     public void setNext(ListBall theNext){ next=theNext; }
-    public void setR(int newR){ r=newR; }
-    public void setG(int newG){ r=newG; }
-    public void setB(int newB){ r=newB; }
+    private void setColorBlack(){ r=g=b=0; }
+    public void setR(){
+        setColorBlack();
+        r=255;
+    }
+    public void setG(){
+        setColorBlack();
+        g=255;
+    }
+    public void setB(){
+        setColorBlack();
+        b=255;
+    }
+    public void changePointer(){ isOnPointer=!isOnPointer; }
 
     @Override
     public void update(double dt){
@@ -39,7 +56,10 @@ public class ListBall extends Ball{
             if (x < 50) arrived = true;
         }
         if(deleted){
-            y -= 200*dt;
+            if(isOnPointer){
+                if(next!=null) next.changePointer();
+            }
+            y += 200*dt;
             if(y > 1100) viewController.removeDrawable(this);
             if(next!=null) next.setPrevious(previous);
         }

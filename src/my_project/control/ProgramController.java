@@ -70,11 +70,23 @@ public class ProgramController {
                 lastBallinQueue = newQueueBall;
             }
             case "List" -> {
-                ListBall newListBall = new ListBall(lastBallInList,viewController);
-                ballList.append(newListBall);
-                lastBallInList = newListBall;
+                if(ballList.isEmpty()){
+                    addListBall();
+                    ballList.toFirst();
+                    ballList.getContent().changePointer();
+                }else {
+                    ListBall previous = lastBallInList;
+                    addListBall();
+                    lastBallInList.setPrevious(previous);
+                }
             }
         }
+    }
+
+    private void addListBall() {
+        ListBall newListBall = new ListBall(lastBallInList,viewController);
+        ballList.append(newListBall);
+        lastBallInList = newListBall;
     }
 
     private void addStackBall() {
@@ -109,17 +121,32 @@ public class ProgramController {
     }
 
     public void setColor(String color){
-        switch (color){
-            case "r" -> {
-                ballList.getContent().setR(255);
-            }
-            case "g" -> {
-                ballList.getContent().setG(255);
-            }
-            case "b" -> {
-                ballList.getContent().setB(255);
+        if(!ballList.isEmpty()&&ballList.hasAccess()) {
+            switch (color) {
+                case "r" -> {
+                    ballList.getContent().setR();
+                }
+                case "g" -> {
+                    ballList.getContent().setG();
+                }
+                case "b" -> {
+                    ballList.getContent().setB();
+                }
             }
         }
+    }
+
+    public void changeListPointer(String to){
+        if(ballList.getContent()!=null)ballList.getContent().changePointer();
+        switch (to){
+            case "toFirst" -> {
+                ballList.toFirst();
+            }
+            case "next" -> {
+                ballList.next();
+            }
+        }
+        if(ballList.getContent()!=null)ballList.getContent().changePointer();
     }
 
     /**

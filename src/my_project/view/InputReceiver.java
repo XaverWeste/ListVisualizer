@@ -58,6 +58,12 @@ public class InputReceiver implements Interactable {
             case KeyEvent.VK_B -> {
                 programController.setColor("b");
             }
+            case KeyEvent.VK_Q -> {
+                programController.changeListPointer("toFirst");
+            }
+            case KeyEvent.VK_E -> {
+                programController.changeListPointer("next");
+            }
         }
     }
 
