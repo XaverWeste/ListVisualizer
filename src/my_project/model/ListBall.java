@@ -50,6 +50,12 @@ public class ListBall extends Ball{
     public void changePointer(){ isOnPointer=!isOnPointer; }
 
     @Override
+    public boolean tryToDelete(){
+        deleted=true;
+        return deleted;
+    }
+
+    @Override
     public void update(double dt){
         if(!arrived){
             if(previous == null || x > previous.getX()+50) x -= 100*dt;

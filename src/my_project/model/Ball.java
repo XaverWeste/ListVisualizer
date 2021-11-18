@@ -23,7 +23,10 @@ public abstract class Ball extends GraphicalObject {
     }
 
     public boolean tryToDelete(){
-        deleted = true;
-        return deleted;
+        if(arrived) {
+            deleted = true;
+            return deleted;
+        }
+        return false;
     }
 }
