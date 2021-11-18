@@ -64,6 +64,9 @@ public class InputReceiver implements Interactable {
             case KeyEvent.VK_E -> {
                 programController.changeListPointer("next");
             }
+            case KeyEvent.VK_W -> {
+                programController.addBall("current");
+            }
         }
     }
 

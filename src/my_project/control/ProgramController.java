@@ -80,6 +80,14 @@ public class ProgramController {
                     previous.setNext(lastBallInList);
                 }
             }
+            case "current" -> {
+                ListBall newListBall = new ListBall(ballList.getContent().getPrevious(),viewController);
+                newListBall.setNext(ballList.getContent());
+                ballList.getContent().setPrevious(newListBall);
+                newListBall.getPrevious().setNext(newListBall);
+                ballList.insert(newListBall);
+                newListBall.setColorBlack();
+            }
         }
     }
 

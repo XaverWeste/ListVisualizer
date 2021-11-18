@@ -34,7 +34,7 @@ public class ListBall extends Ball{
 
     public void setPrevious(ListBall newPrevious){ previous=newPrevious; }
     public void setNext(ListBall theNext){ next=theNext; }
-    private void setColorBlack(){ r=g=b=0; }
+    public void setColorBlack(){ r=g=b=0; }
     public void setR(){
         setColorBlack();
         r=255;
@@ -48,6 +48,7 @@ public class ListBall extends Ball{
         b=255;
     }
     public void changePointer(){ isOnPointer=!isOnPointer; }
+    public ListBall getPrevious(){ return previous; }
 
     @Override
     public boolean tryToDelete(){
@@ -59,12 +60,12 @@ public class ListBall extends Ball{
     public void update(double dt){
         if(!arrived){
             if(previous == null || x > previous.getX()+50) x -= 100*dt;
+            if(previous!=null&&previous.getX()>x+50) x += 100*dt;
             if (x < 50) arrived = true;
         }
         if(deleted){
             if(isOnPointer){
                 if(next!=null) next.changePointer();
-                System.out.print('a');
             }
             y += 200*dt;
             if(y > 1100) viewController.removeDrawable(this);
