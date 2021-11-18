@@ -8,11 +8,18 @@ public class TwoDimesionalArray extends GraphicalObject {
 
     private ViewController viewController;
     private ArrayBall[][] array;
+    private double[] koordinaten;
 
     public TwoDimesionalArray(ViewController viewController){
         this.viewController=viewController;
         array = new ArrayBall[8][4];
+        koordinaten = new double[]{225,275,325,375,425,475,525,575,325,375,425,475};
         viewController.draw(this);
+        //Todo x und y tauschen
+    }
+
+    public void changeBall(int x,int y){
+        if(y<8&&x<4) array[x][y]=new ArrayBall(koordinaten[8+x], koordinaten[y],viewController);
     }
 
     public void draw(DrawTool drawTool){

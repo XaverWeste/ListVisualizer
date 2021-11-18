@@ -55,7 +55,7 @@ public class ProgramController {
         ballList = new List<>();
         ballList.toFirst();
         lastBallInList = null;
-        //array = new TwoDimesionalArray(viewController); //ToDo
+        //array = new TwoDimesionalArray(viewController);
     }
 
     public void addBall(String to){
@@ -93,6 +93,10 @@ public class ProgramController {
             }
         }
     }
+
+    /*public void addArrayBall(int x,int y){
+        array.changeBall(x,y);
+    }*/
 
     private void addListBall() {
         ListBall newListBall = new ListBall(850,lastBallInList,viewController);
