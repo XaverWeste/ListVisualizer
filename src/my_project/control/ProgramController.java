@@ -114,6 +114,8 @@ public class ProgramController {
             ballStack.top().changeFilled();
     }
 
+    public void changeColor(int x,int y){ array.changeColor(x,y); }
+
     public void deleteBall(String from){
         switch (from){
             case "Stack" -> {

@@ -7,6 +7,8 @@ import my_project.control.ProgramController;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+//import static jdk.internal.org.jline.terminal.MouseEvent.Button.Button1;
+
 /**
  * Realisiert ein Objekt, dass alle Eingaben empfängt und dann danach passende Methoden
  * im ProgramController aufruft
@@ -78,7 +80,11 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(e.getX()>300&&e.getY()>200) programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
+        if(e.getX()>300&&e.getY()>200){
+            //if (e.getButton()) {
+                programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
+            //}
+        }
     }
 
     @Override

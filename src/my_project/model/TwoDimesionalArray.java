@@ -28,6 +28,12 @@ public class TwoDimesionalArray extends GraphicalObject {
         }
     }
 
+    public void changeColor(int x,int y){
+        if(x>=0&&y>=0&&y<8&&x<4&&array[y][x]!=null){
+            array[y][x].changeColor();
+        }
+    }
+
     public void draw(DrawTool drawTool){
         drawTool.setCurrentColor(0,0,0,255);
         drawTool.drawRectangle(300,200,200,400);
