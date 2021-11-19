@@ -32,10 +32,7 @@ public class ArrayBall extends Ball{
     public void clearColor(){ r=g=b=255; }
 
     @Override
-    public boolean tryToDelete(){
-        deleted = true;
-        return deleted;
-    }
+    public boolean tryToDelete(){ return deleted=true; }
 
     public void update(double dt){
         if(radius<20) radius+=20*dt;

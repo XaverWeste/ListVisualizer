@@ -3,8 +3,6 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.DrawTool;
 
-import java.awt.*;
-
 public class ListBall extends Ball{
 
     private ListBall previous;
@@ -52,8 +50,7 @@ public class ListBall extends Ball{
 
     @Override
     public boolean tryToDelete(){
-        deleted=true;
-        return deleted;
+        return deleted=true;
     }
 
     @Override

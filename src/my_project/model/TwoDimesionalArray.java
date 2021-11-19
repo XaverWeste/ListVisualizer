@@ -6,9 +6,9 @@ import KAGO_framework.view.DrawTool;
 
 public class TwoDimesionalArray extends GraphicalObject {
 
-    private ViewController viewController;
-    private ArrayBall[][] array;
-    private double[] koordinaten;
+    private final ViewController viewController;
+    private final ArrayBall[][] array;
+    private final double[] koordinaten;
 
     public TwoDimesionalArray(ViewController viewController){
         this.viewController=viewController;

@@ -140,15 +140,9 @@ public class ProgramController {
     public void setColor(String color){
         if(!ballList.isEmpty()&&ballList.hasAccess()) {
             switch (color) {
-                case "r" -> {
-                    ballList.getContent().setR();
-                }
-                case "g" -> {
-                    ballList.getContent().setG();
-                }
-                case "b" -> {
-                    ballList.getContent().setB();
-                }
+                case "r" -> ballList.getContent().setR();
+                case "g" -> ballList.getContent().setG();
+                case "b" -> ballList.getContent().setB();
             }
         }
     }
@@ -156,9 +150,7 @@ public class ProgramController {
     public void changeListPointer(String to){
         if(ballList.getContent()!=null)ballList.getContent().changePointer();
         switch (to){
-            case "toFirst" -> {
-                ballList.toFirst();
-            }
+            case "toFirst" -> ballList.toFirst();
             case "next" -> {
                 if(ballList.hasAccess()) {
                     ballList.next();
@@ -170,19 +162,12 @@ public class ProgramController {
         if(ballList.getContent()!=null)ballList.getContent().changePointer();
     }
 
-    /**
-     * Aufruf bei Mausklick
-     * @param e das Objekt enthält alle Informationen zum Klick
-     */
+
     public void mouseClicked(MouseEvent e){
 
     }
 
-    /**
-     * Aufruf mit jeder Frame
-     * @param dt Zeit seit letzter Frame
-     */
-    public void updateProgram(double dt){
+    public void update(double dt){
 
     }
 }

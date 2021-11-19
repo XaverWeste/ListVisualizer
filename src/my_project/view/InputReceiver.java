@@ -14,7 +14,6 @@ import java.awt.event.MouseEvent;
 public class InputReceiver implements Interactable {
 
     private final ProgramController programController;
-    private ViewController viewController;
 
     /**
      * Objekterzeugung
@@ -23,7 +22,6 @@ public class InputReceiver implements Interactable {
      */
     public InputReceiver(ProgramController programController, ViewController viewController){
         this.programController = programController;
-        this.viewController = viewController;
         viewController.register(this);
     }
 
@@ -34,45 +32,19 @@ public class InputReceiver implements Interactable {
     @Override
     public void keyReleased(int key) {
         switch (key){
-            case KeyEvent.VK_DOWN -> {
-                programController.addBall("Stack");
-            }
-            case KeyEvent.VK_LEFT -> {
-                programController.deleteBall("Stack");
-            }
-            case KeyEvent.VK_SPACE -> {
-                programController.changeFilled();
-            }
-            case KeyEvent.VK_A -> {
-                programController.addBall("List");
-            }
-            case KeyEvent.VK_S -> {
-                programController.deleteBall("List");
-            }
-            case KeyEvent.VK_R -> {
-                programController.setColor("r");
-            }
-            case KeyEvent.VK_G -> {
-                programController.setColor("g");
-            }
-            case KeyEvent.VK_B -> {
-                programController.setColor("b");
-            }
-            case KeyEvent.VK_Q -> {
-                programController.changeListPointer("toFirst");
-            }
-            case KeyEvent.VK_E -> {
-                programController.changeListPointer("next");
-            }
-            case KeyEvent.VK_W -> {
-                programController.addBall("current");
-            }
-            case KeyEvent.VK_Y -> {
-                programController.addBall("Queue");
-            }
-            case KeyEvent.VK_X -> {
-                programController.deleteBall("Queue");
-            }
+            case KeyEvent.VK_DOWN -> programController.addBall("Stack");
+            case KeyEvent.VK_LEFT -> programController.deleteBall("Stack");
+            case KeyEvent.VK_SPACE -> programController.changeFilled();
+            case KeyEvent.VK_A -> programController.addBall("List");
+            case KeyEvent.VK_S -> programController.deleteBall("List");
+            case KeyEvent.VK_R -> programController.setColor("r");
+            case KeyEvent.VK_G -> programController.setColor("g");
+            case KeyEvent.VK_B -> programController.setColor("b");
+            case KeyEvent.VK_Q -> programController.changeListPointer("toFirst");
+            case KeyEvent.VK_E -> programController.changeListPointer("next");
+            case KeyEvent.VK_W -> programController.addBall("current");
+            case KeyEvent.VK_Y -> programController.addBall("Queue");
+            case KeyEvent.VK_X -> programController.deleteBall("Queue");
         }
     }
 
@@ -106,10 +78,6 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
-    }
-
-    public void update(double dt){
 
     }
 }
