@@ -78,88 +78,12 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {/*
-        double x=e.getX();
-        double y=e.getY();
-        if(x>300 && x<500 && y>200 && y<600 ){
-            if(x<350){
-                if(y<250){
-                    programController.addArrayBall(0,0);
-                }else if(y<300){
-                    programController.addArrayBall(0,1);
-                }else if(y<350){
-                    programController.addArrayBall(0,2);
-                }else if(y<400){
-                    programController.addArrayBall(0,3);
-                }else if(y<450){
-                    programController.addArrayBall(0,4);
-                }else if(y<500){
-                    programController.addArrayBall(0,5);
-                }else if(y<550){
-                    programController.addArrayBall(0,6);
-                }else{
-                    programController.addArrayBall(0,7);
-                }
-            }else if(x<400){
-                if(y<250){
-                    programController.addArrayBall(1,0);
-                }else if(y<300){
-                    programController.addArrayBall(1,1);
-                }else if(y<350){
-                    programController.addArrayBall(1,2);
-                }else if(y<400){
-                    programController.addArrayBall(1,3);
-                }else if(y<450){
-                    programController.addArrayBall(1,4);
-                }else if(y<500){
-                    programController.addArrayBall(1,5);
-                }else if(y<550){
-                    programController.addArrayBall(1,6);
-                }else{
-                    programController.addArrayBall(1,7);
-                }
-            }else if(x<450){
-                if(y<250){
-                    programController.addArrayBall(2,0);
-                }else if(y<300){
-                    programController.addArrayBall(2,1);
-                }else if(y<350){
-                    programController.addArrayBall(2,2);
-                }else if(y<400){
-                    programController.addArrayBall(2,3);
-                }else if(y<450){
-                    programController.addArrayBall(2,4);
-                }else if(y<500){
-                    programController.addArrayBall(2,5);
-                }else if(y<550){
-                    programController.addArrayBall(2,6);
-                }else{
-                    programController.addArrayBall(2,7);
-                }
-            }else{
-                if(y<250){
-                    programController.addArrayBall(3,0);
-                }else if(y<300){
-                    programController.addArrayBall(3,1);
-                }else if(y<350){
-                    programController.addArrayBall(3,2);
-                }else if(y<400){
-                    programController.addArrayBall(3,3);
-                }else if(y<450){
-                    programController.addArrayBall(3,4);
-                }else if(y<500){
-                    programController.addArrayBall(3,5);
-                }else if(y<550){
-                    programController.addArrayBall(3,6);
-                }else{
-                    programController.addArrayBall(3,7);
-                }
-            }
-        }*/
+    public void mouseClicked(MouseEvent e) {
+
     }
 
     @Override
