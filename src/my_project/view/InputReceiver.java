@@ -37,7 +37,7 @@ public class InputReceiver implements Interactable {
             case KeyEvent.VK_DOWN -> {
                 programController.addBall("Stack");
             }
-            case KeyEvent.VK_UP -> {
+            case KeyEvent.VK_LEFT -> {
                 programController.deleteBall("Stack");
             }
             case KeyEvent.VK_SPACE -> {
@@ -83,6 +83,8 @@ public class InputReceiver implements Interactable {
                 programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
             }else if(e.getButton() == MouseEvent.BUTTON3){
                 programController.changeColor((e.getX()-300)/50,(e.getY()-200)/50);
+            }else if(e.getButton() == MouseEvent.BUTTON2){
+                programController.clearColor((e.getX()-300)/50,(e.getY()-200)/50);
             }
         }
     }

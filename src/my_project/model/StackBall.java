@@ -32,8 +32,8 @@ public class StackBall extends Ball {
             if (y > 850||previousStackBall!=null&&previousStackBall.arrived&&y >= previousStackBall.getY()-49) arrived = true;
         }
         if(deleted){
-            y -= 200*dt;
-            if(y < -25) viewController.removeDrawable(this);
+            x -= 200*dt;
+            if(x < -25) viewController.removeDrawable(this);
         }
     }
 }

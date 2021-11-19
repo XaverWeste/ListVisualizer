@@ -29,6 +29,8 @@ public class ArrayBall extends Ball{
         b=(int)(Math.random()*255);
     }
 
+    public void clearColor(){ r=g=b=255; }
+
     @Override
     public boolean tryToDelete(){
         deleted = true;
