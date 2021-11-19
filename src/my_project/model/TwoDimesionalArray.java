@@ -19,7 +19,12 @@ public class TwoDimesionalArray extends GraphicalObject {
 
     public void changeBall(int x,int y){
         if(x>=0&&y>=0&&y<8&&x<4){
-            array[x][y] = new ArrayBall(koordinaten[8 + x], koordinaten[y], viewController);
+            if(array[y][x]==null) {
+                array[y][x] = new ArrayBall(koordinaten[8 + x], koordinaten[y], viewController);
+            }else{
+                array[y][x].tryToDelete();
+                array[y][x] = null;
+            }
         }
     }
 

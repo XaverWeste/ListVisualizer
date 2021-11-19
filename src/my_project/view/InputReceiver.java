@@ -78,7 +78,7 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
+        if(e.getX()>300&&e.getY()>200) programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
     }
 
     @Override
