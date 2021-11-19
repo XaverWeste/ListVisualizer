@@ -13,7 +13,7 @@ public class ArrayBall extends Ball{
         this.x=x;
         this.y=y;
         this.viewController=viewController;
-        radius=20;
+        radius=0;
         viewController.draw(this);
     }
 
@@ -36,7 +36,10 @@ public class ArrayBall extends Ball{
     }
 
     public void update(double dt){
-        if(deleted) viewController.removeDrawable(this);
+        if(radius<20) radius+=20*dt;
+        if(deleted){
+            viewController.removeDrawable(this);
+        }
     }
 
 }
