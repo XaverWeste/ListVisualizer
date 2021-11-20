@@ -7,6 +7,7 @@ public class QueueTriangle extends Object {
 
     private final QueueTriangle previousQueueTriangle;
     private final boolean up;
+    private int a=255;
 
     public QueueTriangle(double x, double y, QueueTriangle previousQueueTriangle, ViewController viewController){
         this.previousQueueTriangle=previousQueueTriangle;
@@ -19,7 +20,7 @@ public class QueueTriangle extends Object {
 
     @Override
     public void draw(DrawTool drawTool){
-        drawTool.setCurrentColor(0,0,0,255);
+        drawTool.setCurrentColor(0,0,0,a);
         if(up){
             drawTool.drawTriangle(x,y-20,x-20,y+20,x+20,y+20);
         }else{
@@ -36,8 +37,16 @@ public class QueueTriangle extends Object {
             if (x < 120) arrived = true;
         }
         if(deleted){
-            x -= 200*dt;
-            if(x < -25) viewController.removeDrawable(this);
+            a-=20;
+            if(up){
+                y+=50*dt;
+            }else{
+                y-=50*dt;
+            }
+            if(a<=1){
+                viewController.removeDrawable(this);
+                x=-100;
+            }
         }
     }
 }
