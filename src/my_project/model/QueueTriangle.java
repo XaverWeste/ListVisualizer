@@ -6,18 +6,14 @@ import KAGO_framework.view.DrawTool;
 public class QueueTriangle extends Object {
 
     private final QueueTriangle previousQueueTriangle;
-    private boolean up;
+    private final boolean up;
 
     public QueueTriangle(double x, double y, QueueTriangle previousQueueTriangle, ViewController viewController){
         this.previousQueueTriangle=previousQueueTriangle;
         this.x = x;
         this.y = y;
         this.viewController = viewController;
-        if(previousQueueTriangle!=null){
-            up=!previousQueueTriangle.getUp();
-        }else{
-            up=true;
-        }
+        up = previousQueueTriangle == null || !previousQueueTriangle.getUp();
         viewController.draw(this);
     }
 
