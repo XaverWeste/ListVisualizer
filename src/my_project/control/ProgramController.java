@@ -6,7 +6,7 @@ import KAGO_framework.model.abitur.datenstrukturen.Queue;
 import KAGO_framework.model.abitur.datenstrukturen.Stack;
 import my_project.model.ListBall;
 import my_project.model.QueueTriangle;
-import my_project.model.StackBall;
+import my_project.model.StackRectangle;
 import my_project.model.TwoDimesionalArray;
 import my_project.view.InputReceiver;
 
@@ -17,7 +17,7 @@ public class ProgramController {
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Queue<QueueTriangle> triangleQueue;
     private QueueTriangle lastTriangleinQueue;
-    private Stack<StackBall> ballStack;
+    private Stack<StackRectangle> ballStack;
     private List<ListBall> ballList;
     private ListBall lastBallInList;
     private TwoDimesionalArray array;
@@ -84,8 +84,8 @@ public class ProgramController {
     }
 
     private void addStackBall() {
-        StackBall newStackBall = new StackBall( -50, ballStack.top(), viewController);
-        ballStack.push(newStackBall);
+        StackRectangle newStackRectangle = new StackRectangle( -50, ballStack.top(), viewController);
+        ballStack.push(newStackRectangle);
     }
 
     public void changeFilled(){
