@@ -3,7 +3,7 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.DrawTool;
 
-public class ListBall extends Ball{
+public class ListBall extends Object{
 
     private ListBall previous;
     private ListBall next=null;

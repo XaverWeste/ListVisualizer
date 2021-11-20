@@ -4,13 +4,13 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public abstract class Ball extends GraphicalObject {
+public abstract class Object extends GraphicalObject {
 
     protected boolean arrived;
     protected boolean deleted;
     protected ViewController viewController;
 
-    public Ball(){
+    public Object(){
         arrived = false;
         deleted = false;
         radius = 20;

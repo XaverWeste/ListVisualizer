@@ -3,7 +3,7 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.DrawTool;
 
-public class ArrayBall extends Ball{
+public class ArrayBall extends Object{
 
     private int r=255;
     private int g=255;

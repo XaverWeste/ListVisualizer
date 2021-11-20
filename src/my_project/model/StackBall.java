@@ -3,7 +3,7 @@ package my_project.model;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.DrawTool;
 
-public class StackBall extends Ball {
+public class StackBall extends Object {
 
     private final StackBall previousStackBall;
     private boolean isFilled=false;

@@ -5,52 +5,31 @@ import KAGO_framework.model.abitur.datenstrukturen.List;
 import KAGO_framework.model.abitur.datenstrukturen.Queue;
 import KAGO_framework.model.abitur.datenstrukturen.Stack;
 import my_project.model.ListBall;
-import my_project.model.QueueBall;
+import my_project.model.QueueTriangle;
 import my_project.model.StackBall;
 import my_project.model.TwoDimesionalArray;
 import my_project.view.InputReceiver;
 
 import java.awt.event.MouseEvent;
 
-/**
- * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
- * mit jeder Frame im laufenden Programm aufgerufen.
- */
 public class ProgramController {
 
-    //Attribute
-
-
-    // Referenzen
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
-    private Queue<QueueBall> ballQueue;
-    private QueueBall lastBallinQueue;
+    private Queue<QueueTriangle> triangleQueue;
+    private QueueTriangle lastTriangleinQueue;
     private Stack<StackBall> ballStack;
     private List<ListBall> ballList;
     private ListBall lastBallInList;
     private TwoDimesionalArray array;
 
-    /**
-     * Konstruktor
-     * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
-     * Damit der ProgramController auf das Fenster zugreifen kann, benötigt er eine Referenz auf das Objekt
-     * der Klasse viewController. Diese wird als Parameter übergeben.
-     * @param viewController das viewController-Objekt des Programms
-     */
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
     }
 
-    /**
-     * Diese Methode wird genau ein mal nach Programmstart aufgerufen.
-     * Sie erstellt die leeren Datenstrukturen, zu Beginn nur eine Queue
-     */
     public void startProgram() {
-        // Für Benutzerinteraktion
-        new InputReceiver(this,viewController); // darf anonym sein, weil kein Zugriff nötig ist
-        // Für die Queue:
-        ballQueue = new Queue<>();
-        lastBallinQueue = null; // die letzte Kugel muss für die Animation gemerkt werden
+        new InputReceiver(this,viewController);
+        triangleQueue = new Queue<>();
+        lastTriangleinQueue = null;
         ballStack = new Stack<>();
         ballList = new List<>();
         ballList.toFirst();
@@ -68,9 +47,9 @@ public class ProgramController {
                 }
             }
             case "Queue" -> {
-                QueueBall newQueueBall = new QueueBall(850, 50, lastBallinQueue, viewController);
-                ballQueue.enqueue(newQueueBall);
-                lastBallinQueue = newQueueBall;
+                QueueTriangle newQueueBall = new QueueTriangle(850, 50, lastTriangleinQueue, viewController);
+                triangleQueue.enqueue(newQueueBall);
+                lastTriangleinQueue = newQueueBall;
             }
             case "List" -> {
                 if(ballList.isEmpty()){
@@ -125,8 +104,8 @@ public class ProgramController {
                 }
             }
             case "Queue" -> {
-                if(!ballQueue.isEmpty()){
-                    if(ballQueue.front().tryToDelete()) ballQueue.dequeue();
+                if(!triangleQueue.isEmpty()){
+                    if(triangleQueue.front().tryToDelete()) triangleQueue.dequeue();
                 }
             }
             case "List" -> {
@@ -161,7 +140,6 @@ public class ProgramController {
         }
         if(ballList.getContent()!=null)ballList.getContent().changePointer();
     }
-
 
     public void mouseClicked(MouseEvent e){
 
