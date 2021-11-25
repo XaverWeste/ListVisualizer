@@ -60,6 +60,8 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
         return deleted=true;
     }
 
+    public ListBall getNext(){ return next; }
+
     public void update(double dt){
         if(y>950) y-=50*dt;
         if(!arrived){
