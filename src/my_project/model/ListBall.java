@@ -4,7 +4,7 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class ListBall extends GraphicalObject {
+public class ListBall extends GraphicalObject implements AnimatedListInterface{
 
     private ListBall previous;
     private ListBall next=null;
