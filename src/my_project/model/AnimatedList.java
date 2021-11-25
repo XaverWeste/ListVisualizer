@@ -32,6 +32,8 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
             case "current" -> {
                 if(list.hasAccess()) {
                     newT.setNext(list.getContent());
+                    newT.setX(newT.getNext().getX());
+                    newT.setY(1000);
                     list.getContent().setPrevious(newT);
                     if (newT.getPrevious() != null) {
                         newT.getPrevious().setNext(newT);
@@ -68,4 +70,7 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
         lastInList = newT;
     }
 
+    public T getlast(){ return lastInList; }
+
+    public List<T> getList(){ return list; }
 }

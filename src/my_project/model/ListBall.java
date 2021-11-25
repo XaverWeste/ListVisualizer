@@ -54,9 +54,15 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
         b=255;
     }
     public void changePointer(){ isOnPointer=!isOnPointer; }
+
     public ListBall getPrevious(){ return previous; }
 
     public boolean tryToDelete(){
+        if(this.getPrevious()!=null&&this.getNext()!=null){
+            this.getPrevious().setNext(this.getNext());
+        }else if(this.getPrevious()!=null&&this.getNext()==null){
+            this.getPrevious().setNext(null);
+        }
         return deleted=true;
     }
 
