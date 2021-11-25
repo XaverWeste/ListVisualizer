@@ -54,4 +54,8 @@ public class TwoDimesionalArray extends GraphicalObject {
         drawTool.drawLine(300,500,500,500);
         drawTool.drawLine(300,550,500,550);
     }
+
+    public void update(double dt){
+
+    }
 }
