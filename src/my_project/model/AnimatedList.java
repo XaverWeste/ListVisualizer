@@ -16,23 +16,21 @@ public class AnimatedList <T extends GraphicalObject & AnimableList>{
         list.toFirst();
     }
 
-    public void addToList(String to){
+    public void addToList(String to,T newT){
         switch(to){
             case "List" -> {
                 if(list.isEmpty()){
-                    add();
+                    add(newT);
                     list.toFirst();
                     list.getContent().changePointer();
                 }else {
                     T previous = lastInList;
-                    add();
+                    add(newT);
                     previous.setNext(lastInList);
                 }
             }
             case "current" -> {
                 if(list.hasAccess()) {
-                    T newT = new T();
-                    newT.setY(1000);
                     newT.setNext(list.getContent());
                     list.getContent().setPrevious(newT);
                     if (newT.getPrevious() != null) {
@@ -65,8 +63,7 @@ public class AnimatedList <T extends GraphicalObject & AnimableList>{
         if(list.getContent()!=null) list.getContent().changePointer();
     }
 
-    private void add() {
-        T newT = new T();
+    private void add(T newT) {
         list.append(newT);
         lastInList = newT;
     }

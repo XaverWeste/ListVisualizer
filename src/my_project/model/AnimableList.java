@@ -4,17 +4,19 @@ import KAGO_framework.view.DrawTool;
 
 public interface AnimableList<T> {
 
-    public void draw(DrawTool drawTool);
+    void draw(DrawTool drawTool);
 
-    public void update(double dt);
+    void update(double dt);
 
-    public void setPrevious(T newPrevious);
-    public void setNext(T theNext);
+    void setPrevious(T newPrevious);
+    void setNext(T theNext);
 
-    public void changePointer();
+    void changePointer();
 
-    public ListBall getPrevious();
+    T getPrevious();
 
-    public boolean tryToDelete();
+    T getNext();
+
+    boolean tryToDelete();
 
 }
