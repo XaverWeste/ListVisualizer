@@ -25,7 +25,7 @@ public class ProgramController {
         ballList = new List<>();
         ballList.toFirst();
         lastBallInList = null;
-        new AnimatedList<ListBall>(lastBallInList,viewController);
+        new AnimatedList<ListBall>(viewController);
     }
 
     public void addBall(String to){

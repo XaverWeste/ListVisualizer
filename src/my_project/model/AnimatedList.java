@@ -4,26 +4,71 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.abitur.datenstrukturen.List;
 
-public class AnimatedList <T extends GraphicalObject & AnimatedListInterface>{
+public class AnimatedList <T extends GraphicalObject & AnimableList>{
 
-    private ListBall previous;
     private ListBall next=null;
-    private boolean isOnPointer;
-    private boolean arrived;
-    private boolean deleted;
     private ViewController viewController;
     private List<T> list=new List();
+    private T lastInList;
 
-    public AnimatedList(ListBall previousBall, ViewController viewController){
-        previous=previousBall;
+    public AnimatedList(ViewController viewController){
         this.viewController=viewController;
-        isOnPointer=false;
-        arrived = false;
-        deleted = false;
+        list.toFirst();
     }
 
-    public void setPrevious(ListBall newPrevious){ previous=newPrevious; }
-    public void setNext(ListBall theNext){ next=theNext; }
-    public ListBall getPrevious(){ return previous; }
-    public boolean tryToDelete(){ return deleted=true; }
+    public void addToList(String to){
+        switch(to){
+            case "List" -> {
+                if(list.isEmpty()){
+                    add();
+                    list.toFirst();
+                    list.getContent().changePointer();
+                }else {
+                    T previous = lastInList;
+                    add();
+                    previous.setNext(lastInList);
+                }
+            }
+            case "current" -> {
+                if(list.hasAccess()) {
+                    T newT = new T();
+                    newT.setY(1000);
+                    newT.setNext(list.getContent());
+                    list.getContent().setPrevious(newT);
+                    if (newT.getPrevious() != null) {
+                        newT.getPrevious().setNext(newT);
+                    }
+                    list.insert(newT);
+                }
+            }
+        }
+    }
+
+    public void deleteFromList(){
+        if(!list.isEmpty()&& list.hasAccess()){
+            if(list.getContent().tryToDelete()) list.remove();
+        }
+    }
+
+    public void changeListPointer(String to){
+        if(list.getContent()!=null)list.getContent().changePointer();
+        switch (to){
+            case "toFirst" -> list.toFirst();
+            case "next" -> {
+                if(list.hasAccess()) {
+                    list.next();
+                }else{
+                    list.toFirst();
+                }
+            }
+        }
+        if(list.getContent()!=null) list.getContent().changePointer();
+    }
+
+    private void add() {
+        T newT = new T();
+        list.append(newT);
+        lastInList = newT;
+    }
+
 }
