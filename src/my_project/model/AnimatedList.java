@@ -15,7 +15,7 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
         this.viewController=viewController;
         list.toFirst();
     }
-
+//Ich bin ein Kommentar
     public void addToList(String to,T newT){
         switch(to){
             case "List" -> {
