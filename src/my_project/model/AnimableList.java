@@ -9,6 +9,7 @@ public interface AnimableList<T> {
     void update(double dt);
 
     void setPrevious(T newPrevious);
+
     void setNext(T theNext);
 
     void changePointer();
