@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 public class ProgramController {
 
     private final ViewController viewController;
-    private AnimatedList<ListBall> listBall;
+    private AnimatedList<ListBall> list;
 
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
@@ -18,33 +18,33 @@ public class ProgramController {
 
     public void startProgram() {
         new InputReceiver(this,viewController);
-        listBall = new AnimatedList<ListBall>();
+        list = new AnimatedList<ListBall>();
     }
 
     public void addBall(String to){
-        if(listBall.getList().getContent()!=null) {
-            listBall.addToList(to, new ListBall(850, listBall.getList().getContent().getPrevious(), viewController));
+        if(list.getList().getContent()!=null) {
+            list.addToList(to, new ListBall(850, list.getList().getContent().getPrevious(), viewController));
         }else{
-            listBall.addToList(to, new ListBall(850,null, viewController));
+            list.addToList(to, new ListBall(850,null, viewController));
         }
     }
 
     public void deleteBall(){
-        listBall.deleteFromList();
+        list.deleteFromList();
     }
 
     public void setColor(String color){
-        if(!listBall.getList().isEmpty()&&listBall.getList().hasAccess()) {
+        if(!list.getList().isEmpty()&& list.getList().hasAccess()) {
             switch (color) {
-                case "r" -> listBall.getList().getContent().setR();
-                case "g" -> listBall.getList().getContent().setG();
-                case "b" -> listBall.getList().getContent().setB();
+                case "r" -> list.getList().getContent().setR();
+                case "g" -> list.getList().getContent().setG();
+                case "b" -> list.getList().getContent().setB();
             }
         }
     }
 
     public void changeListPointer(String to){
-        listBall.changeListPointer(to);
+        list.changeListPointer(to);
     }
 
     public void mouseClicked(MouseEvent e){
