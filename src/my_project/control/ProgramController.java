@@ -4,6 +4,7 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.abitur.datenstrukturen.List;
 import KAGO_framework.model.abitur.datenstrukturen.Queue;
 import KAGO_framework.model.abitur.datenstrukturen.Stack;
+import my_project.model.AnimatedList;
 import my_project.model.ListBall;
 import my_project.view.InputReceiver;
 
@@ -24,6 +25,7 @@ public class ProgramController {
         ballList = new List<>();
         ballList.toFirst();
         lastBallInList = null;
+        new AnimatedList<ListBall>(lastBallInList,viewController);
     }
 
     public void addBall(String to){
