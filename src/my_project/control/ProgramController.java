@@ -18,7 +18,7 @@ public class ProgramController {
 
     public void startProgram() {
         new InputReceiver(this,viewController);
-        listBall = new AnimatedList<>(viewController);
+        listBall = new AnimatedList<ListBall>();
     }
 
     public void addBall(String to){

@@ -8,9 +8,7 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
     private final List<T> list=new List();
     private T lastInList;
 
-    public AnimatedList(){
-        list.toFirst();
-    }
+    public AnimatedList(){ list.toFirst(); }
 
     public void addToList(String to,T newT){
         switch(to){
