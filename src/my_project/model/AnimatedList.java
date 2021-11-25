@@ -1,18 +1,14 @@
 package my_project.model;
 
-import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.abitur.datenstrukturen.List;
 
 public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
 
-    private ListBall next=null;
-    private ViewController viewController;
-    private List<T> list=new List();
+    private final List<T> list=new List();
     private T lastInList;
 
-    public AnimatedList(ViewController viewController){
-        this.viewController=viewController;
+    public AnimatedList(){
         list.toFirst();
     }
 
