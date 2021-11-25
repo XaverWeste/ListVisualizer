@@ -40,12 +40,16 @@ public class ProgramController {
                 }
             }
             case "current" -> {
-                ListBall newListBall = new ListBall(ballList.getContent().getX(),ballList.getContent().getPrevious(),viewController);
-                newListBall.setY(1000);
-                newListBall.setNext(ballList.getContent());
-                ballList.getContent().setPrevious(newListBall);
-                newListBall.getPrevious().setNext(newListBall);
-                ballList.insert(newListBall);
+                if(ballList.hasAccess()) {
+                    ListBall newListBall = new ListBall(ballList.getContent().getX(), ballList.getContent().getPrevious(), viewController);
+                    newListBall.setY(1000);
+                    newListBall.setNext(ballList.getContent());
+                    ballList.getContent().setPrevious(newListBall);
+                    if (newListBall.getPrevious() != null) {
+                        newListBall.getPrevious().setNext(newListBall);
+                    }
+                    ballList.insert(newListBall);
+                }
             }
         }
     }
