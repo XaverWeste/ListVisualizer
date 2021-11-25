@@ -22,7 +22,11 @@ public class ProgramController {
     }
 
     public void addBall(String to){
-        list.addToList(to,new ListBall(list.getList().getContent().getX(),list.getList().getContent().getPrevious(),viewController));
+        if(list.getList().getContent()!=null) {
+            list.addToList(to, new ListBall(850, list.getList().getContent().getPrevious(), viewController));
+        }else{
+            list.addToList(to, new ListBall(850,null, viewController));
+        }
     }
 
     public void deleteBall(){
