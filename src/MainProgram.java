@@ -11,7 +11,5 @@ public class MainProgram {
      * Der gesamte Prozess endet mit dem Erzeugen eines Objekts der Klasse "ProgramController", die sich im Paket "my_project > control"
      * befindet. Dort sollte deine Arbeit beginnen.
      */
-    public static void main (String[] args){
-        MainController.startFramework();
-    }
+    public static void main (String[] args){ MainController.startFramework(); }
 }

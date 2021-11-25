@@ -40,5 +40,4 @@ public class ArrayBall extends Object{
             viewController.removeDrawable(this);
         }
     }
-
 }
