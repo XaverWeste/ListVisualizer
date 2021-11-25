@@ -12,7 +12,7 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
     private boolean isOnPointer;
     private boolean arrived;
     private boolean deleted;
-    private ViewController viewController;
+    private final ViewController viewController;
 
     public ListBall(double x, ListBall previousBall, ViewController viewController){
         this.x=x;
