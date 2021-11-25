@@ -1,14 +1,18 @@
 package my_project.model;
 
 import KAGO_framework.control.ViewController;
+import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class ListBall extends Object{
+public class ListBall extends GraphicalObject {
 
     private ListBall previous;
     private ListBall next=null;
     private int r,g,b;
     private boolean isOnPointer;
+    private boolean arrived;
+    private boolean deleted;
+    private ViewController viewController;
 
     public ListBall(double x,ListBall previousBall, ViewController viewController){
         this.x=x;
@@ -18,6 +22,9 @@ public class ListBall extends Object{
         viewController.draw(this);
         r=b=g=255;
         isOnPointer=false;
+        arrived = false;
+        deleted = false;
+        radius = 20;
     }
 
     public void draw(DrawTool drawTool){
@@ -27,7 +34,8 @@ public class ListBall extends Object{
         }
         drawTool.setCurrentColor(r,g,b,255);
         drawTool.drawFilledCircle(x,y,radius);
-        super.draw(drawTool);
+        drawTool.setCurrentColor(0,0,0,255);
+        drawTool.drawCircle(x,y,radius);
     }
 
     public void setPrevious(ListBall newPrevious){ previous=newPrevious; }
@@ -48,12 +56,10 @@ public class ListBall extends Object{
     public void changePointer(){ isOnPointer=!isOnPointer; }
     public ListBall getPrevious(){ return previous; }
 
-    @Override
     public boolean tryToDelete(){
         return deleted=true;
     }
 
-    @Override
     public void update(double dt){
         if(y>950) y-=50*dt;
         if(!arrived){

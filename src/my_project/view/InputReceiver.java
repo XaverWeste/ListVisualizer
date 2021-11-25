@@ -32,33 +32,20 @@ public class InputReceiver implements Interactable {
     @Override
     public void keyReleased(int key) {
         switch (key){
-            case KeyEvent.VK_DOWN -> programController.addBall("Stack");
-            case KeyEvent.VK_LEFT -> programController.deleteBall("Stack");
-            case KeyEvent.VK_SPACE -> programController.changeFilled();
             case KeyEvent.VK_A -> programController.addBall("List");
-            case KeyEvent.VK_S -> programController.deleteBall("List");
+            case KeyEvent.VK_S -> programController.deleteBall();
             case KeyEvent.VK_R -> programController.setColor("r");
             case KeyEvent.VK_G -> programController.setColor("g");
             case KeyEvent.VK_B -> programController.setColor("b");
             case KeyEvent.VK_Q -> programController.changeListPointer("toFirst");
             case KeyEvent.VK_E -> programController.changeListPointer("next");
             case KeyEvent.VK_W -> programController.addBall("current");
-            case KeyEvent.VK_Y -> programController.addBall("Queue");
-            case KeyEvent.VK_X -> programController.deleteBall("Queue");
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(e.getX()>300&&e.getY()>200){
-            if (e.getButton() == MouseEvent.BUTTON1) {
-                programController.changeArrayBall((e.getX()-300)/50,(e.getY()-200)/50);
-            }else if(e.getButton() == MouseEvent.BUTTON3){
-                programController.changeColor((e.getX()-300)/50,(e.getY()-200)/50);
-            }else if(e.getButton() == MouseEvent.BUTTON2){
-                programController.clearColor((e.getX()-300)/50,(e.getY()-200)/50);
-            }
-        }
+
     }
 
     @Override
