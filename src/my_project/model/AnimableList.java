@@ -1,5 +1,6 @@
 package my_project.model;
 
+import KAGO_framework.control.SoundController;
 import KAGO_framework.view.DrawTool;
 
 public interface AnimableList<T> {
@@ -19,5 +20,7 @@ public interface AnimableList<T> {
     T getNext();
 
     boolean tryToDelete();
+
+    void sounds(SoundController soundController);
 
 }

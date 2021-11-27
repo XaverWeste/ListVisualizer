@@ -24,7 +24,7 @@ public class ProgramController {
 
     public void addBall(String to){
         if(list.getList().hasAccess()) {
-            list.addToList(to, new ListCircle(list.getList().getContent(), viewController));
+            list.addToList(to, new ListCircle(list.getlast(), viewController));
         }else{
             list.addToList(to, new ListCircle(null, viewController));
         }

@@ -1,5 +1,6 @@
 package my_project.model;
 
+import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
@@ -80,5 +81,9 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
             if(y > 1100) viewController.removeDrawable(this);
             if(next!=null) next.setPrevious(previous);
         }
+    }
+
+    public void sounds(SoundController soundController){
+
     }
 }

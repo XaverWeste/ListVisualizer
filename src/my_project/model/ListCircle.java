@@ -1,5 +1,6 @@
 package my_project.model;
 
+import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
@@ -13,6 +14,7 @@ public class ListCircle extends GraphicalObject implements AnimableList<ListCirc
     private final ViewController viewController;
     private ListCircle previous;
     private ListCircle next=null;
+    private SoundController soundController;
 
     public ListCircle(ListCircle previousBall, ViewController viewController){
         if(previousBall!=null){
@@ -26,6 +28,8 @@ public class ListCircle extends GraphicalObject implements AnimableList<ListCirc
         viewController.draw(this);
         r=b=g=255;
         radius = 0;
+        soundController=new SoundController();
+        sounds(soundController);
     }
 
     public void draw(DrawTool drawTool){
@@ -79,5 +83,9 @@ public class ListCircle extends GraphicalObject implements AnimableList<ListCirc
             if(radius<=0) viewController.removeDrawable(this);
             if(next!=null) next.setPrevious(previous);
         }
+    }
+
+    public void sounds(SoundController soundController){
+
     }
 }
