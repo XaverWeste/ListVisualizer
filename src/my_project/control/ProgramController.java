@@ -3,6 +3,7 @@ package my_project.control;
 import KAGO_framework.control.ViewController;
 import my_project.model.AnimatedList;
 import my_project.model.ListBall;
+import my_project.model.ListCircle;
 import my_project.view.InputReceiver;
 
 import java.awt.event.MouseEvent;
@@ -10,7 +11,7 @@ import java.awt.event.MouseEvent;
 public class ProgramController {
 
     private final ViewController viewController;
-    private AnimatedList<ListBall> list;
+    private AnimatedList<ListCircle> list;
 
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
@@ -18,14 +19,14 @@ public class ProgramController {
 
     public void startProgram() {
         new InputReceiver(this,viewController);
-        list = new AnimatedList<ListBall>();
+        list = new AnimatedList<>();
     }
 
     public void addBall(String to){
         if(list.getList().getContent()!=null) {
-            list.addToList(to, new ListBall(850, list.getList().getContent().getPrevious(), viewController));
+            list.addToList(to, new ListCircle(list.getList().getContent().getPrevious(), viewController));
         }else{
-            list.addToList(to, new ListBall(850,null, viewController));
+            list.addToList(to, new ListCircle(null, viewController));
         }
     }
 

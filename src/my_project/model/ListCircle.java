@@ -4,24 +4,28 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class ListBall extends GraphicalObject implements AnimableList<ListBall> {
+public class ListCircle extends GraphicalObject implements AnimableList<ListCircle> {
 
     private int r,g,b;
     private boolean isOnPointer=false;
     private boolean arrived=false;
     private boolean deleted=false;
     private final ViewController viewController;
-    private ListBall previous;
-    private ListBall next=null;
+    private ListCircle previous;
+    private ListCircle next=null;
 
-    public ListBall(double x, ListBall previousBall, ViewController viewController){
-        this.x=x;
-        y=950;
+    public ListCircle(ListCircle previousBall, ViewController viewController){
+        if(previousBall!=null){
+            x=previousBall.getX()+50;
+        }else{
+            x=100;
+        }
+        y=450;
         previous=previousBall;
         this.viewController=viewController;
         viewController.draw(this);
         r=b=g=255;
-        radius = 20;
+        radius = 0;
     }
 
     public void draw(DrawTool drawTool){
@@ -35,8 +39,8 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
         drawTool.drawCircle(x,y,radius);
     }
 
-    public void setPrevious(ListBall newPrevious){ previous=newPrevious; }
-    public void setNext(ListBall theNext){ next=theNext; }
+    public void setPrevious(ListCircle newPrevious){ previous=newPrevious; }
+    public void setNext(ListCircle theNext){ next=theNext; }
     public void setColorBlack(){ r=g=b=0; }
     public void setR(){
         setColorBlack();
@@ -52,7 +56,7 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
     }
     public void changePointer(){ isOnPointer=!isOnPointer; }
 
-    public ListBall getPrevious(){ return previous; }
+    public ListCircle getPrevious(){ return previous; }
 
     public boolean tryToDelete(){
         if(this.getPrevious()!=null&&this.getNext()!=null){
@@ -63,21 +67,16 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
         return deleted=true;
     }
 
-    public ListBall getNext(){ return next; }
+    public ListCircle getNext(){ return next; }
 
     public void update(double dt){
-        if(y>950) y-=50*dt;
-        if(!arrived){
-            if(previous == null || x > previous.getX()+50) x -= 100*dt;
-            if(previous!=null&&previous.getX()>x-50) x += 100*dt;
-            if (x < 50) arrived = true;
-        }
+        if(radius<20) radius+=5*dt;
         if(deleted){
             if(isOnPointer){
                 if(next!=null) next.changePointer();
             }
-            y += 200*dt;
-            if(y > 1100) viewController.removeDrawable(this);
+            radius-=5*dt;
+            if(radius<=0) viewController.removeDrawable(this);
             if(next!=null) next.setPrevious(previous);
         }
     }
