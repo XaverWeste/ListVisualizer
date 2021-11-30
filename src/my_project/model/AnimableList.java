@@ -9,6 +9,16 @@ public interface AnimableList<T> {
 
     void update(double dt);
 
+    /**
+     * Wird in AnimatedList aufgerufen
+     */
+    void deleteAnimation(double dt);
+
+    /**
+     * Wird in AnimatedList aufgerufen
+     */
+    void spawnAnimation(double dt);
+
     void setPrevious(T newPrevious);
 
     void setNext(T theNext);

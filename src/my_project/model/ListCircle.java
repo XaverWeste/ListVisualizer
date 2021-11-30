@@ -85,6 +85,18 @@ public class ListCircle extends GraphicalObject implements AnimableList<ListCirc
         }
     }
 
+
+    //TODO untere Methoden implementieren
+    @Override
+    public void deleteAnimation(double dt) {
+
+    }
+
+    @Override
+    public void spawnAnimation(double dt) {
+
+    }
+
     public void sounds(SoundController soundController){
 
     }

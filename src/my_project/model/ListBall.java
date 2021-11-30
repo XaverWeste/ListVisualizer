@@ -83,7 +83,8 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
         }
     }
 
-    public void sounds(SoundController soundController){
-
-    }
+    //TODO untere Methoden implementieren
+    public void sounds(SoundController soundController){}
+    public void deleteAnimation(double dt){}
+    public void spawnAnimation(double dt){}
 }

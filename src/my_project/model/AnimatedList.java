@@ -7,6 +7,7 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
 
     private final List<T> list=new List();
     private T lastInList;
+    //TODO objekte der Klasse T müssen weitere Attribute; boolean isOnPointer, boolean deleted, boolean arrived, T next und T previous ; enthalten
 
     public AnimatedList(){ list.toFirst(); }
 
@@ -67,4 +68,8 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
     public T getlast(){ return lastInList; }
 
     public List<T> getList(){ return list; }
+
+    public void update(double dt){
+        //TODO update muss delete und spawn Animation aufrufen
+    }
 }
