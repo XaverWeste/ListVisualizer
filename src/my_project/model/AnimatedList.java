@@ -3,13 +3,15 @@ package my_project.model;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.abitur.datenstrukturen.List;
 
-public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
+public class AnimatedList <T extends ListObject & AnimableList<T>> extends GraphicalObject {
 
     private final List<T> list=new List();
     private T lastInList;
     //TODO objekte der Klasse T müssen weitere Attribute; boolean isOnPointer, boolean deleted, boolean arrived, T next und T previous ; enthalten
 
-    public AnimatedList(){ list.toFirst(); }
+    public AnimatedList(){
+        list.toFirst();
+    }
 
     public void addToList(String to,T newT){
         switch(to){
@@ -70,6 +72,13 @@ public class AnimatedList <T extends GraphicalObject & AnimableList<T>>{
     public List<T> getList(){ return list; }
 
     public void update(double dt){
-        //TODO update muss delete und spawn Animation aufrufen
+        //TODO aufruf von delete und spawn Animation nur wennbedingung erfüllt ist
+        list.toFirst();
+        while(list.getContent()!=null){
+            T t=list.getContent();
+            t.deleteAnimation(dt);
+            t.spawnAnimation(dt);
+            list.next();
+        }
     }
 }

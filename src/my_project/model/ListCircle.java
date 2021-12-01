@@ -5,15 +5,10 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class ListCircle extends GraphicalObject implements AnimableList<ListCircle> {
+public class ListCircle extends ListObject implements AnimableList<ListCircle> {
 
     private int r,g,b;
-    private boolean isOnPointer=false;
-    private boolean arrived=false;
-    private boolean deleted=false;
     private final ViewController viewController;
-    private ListCircle previous;
-    private ListCircle next=null;
     private SoundController soundController;
 
     public ListCircle(ListCircle previousBall, ViewController viewController){

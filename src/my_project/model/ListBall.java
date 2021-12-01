@@ -5,7 +5,7 @@ import KAGO_framework.control.ViewController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class ListBall extends GraphicalObject implements AnimableList<ListBall> {
+public class ListBall extends ListObject implements AnimableList<ListBall> {
 
     private int r,g,b;
     private boolean isOnPointer=false;
@@ -67,12 +67,10 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
     public ListBall getNext(){ return next; }
 
     public void update(double dt){
-        if(y>950) y-=50*dt;
-        if(!arrived){
-            if(previous == null || x > previous.getX()+50) x -= 100*dt;
-            if(previous!=null&&previous.getX()>x-50) x += 100*dt;
-            if (x < 50) arrived = true;
-        }
+    }
+
+    public void sounds(SoundController soundController){}
+    public void deleteAnimation(double dt){
         if(deleted){
             if(isOnPointer){
                 if(next!=null) next.changePointer();
@@ -82,9 +80,11 @@ public class ListBall extends GraphicalObject implements AnimableList<ListBall> 
             if(next!=null) next.setPrevious(previous);
         }
     }
-
-    //TODO untere Methoden implementieren
-    public void sounds(SoundController soundController){}
-    public void deleteAnimation(double dt){}
-    public void spawnAnimation(double dt){}
+    public void spawnAnimation(double dt){
+        if(!arrived){
+            if(previous == null || x > previous.getX()+50) x -= 100*dt;
+            if(previous!=null&&previous.getX()>x-50) x += 100*dt;
+            if (x < 50) arrived = true;
+        }
+    }
 }
