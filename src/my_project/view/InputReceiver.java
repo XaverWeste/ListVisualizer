@@ -37,11 +37,13 @@ public class InputReceiver implements Interactable {
             case KeyEvent.VK_Q -> programController.changeListPointer("toFirst");
             case KeyEvent.VK_E -> programController.changeListPointer("next");
             case KeyEvent.VK_W -> programController.addBall("current");
+            /*
             case KeyEvent.VK_J -> programController.adBall("List");
             case KeyEvent.VK_K -> programController.deletteBall();
             case KeyEvent.VK_U -> programController.changeLisstPointer("toFirst");
             case KeyEvent.VK_O -> programController.changeLisstPointer("next");
             case KeyEvent.VK_I -> programController.adBall("current");
+             */
         }
     }
 

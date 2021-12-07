@@ -41,6 +41,7 @@ public class ProgramController {
         list.changeListPointer(to);
     }
 
+    /*
     public void adBall(String to){
         if (lisst.getlast() != null) {
             lisst.addToList(to, new ListBall(1000,lisst.getlast(), viewController));
@@ -58,6 +59,7 @@ public class ProgramController {
         lisst.changeListPointer(to);
     }
 
+     */
     public void mouseClicked(MouseEvent e){
 
     }
