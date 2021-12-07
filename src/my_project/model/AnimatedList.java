@@ -7,7 +7,6 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
 
     private final List<T> list=new List();
     private T lastInList;
-    //TODO objekte der Klasse T müssen weitere Attribute; boolean isOnPointer, boolean deleted, boolean arrived, T next und T previous ; enthalten
 
     public AnimatedList(){
         list.toFirst();
@@ -72,13 +71,16 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
     public List<T> getList(){ return list; }
 
     public void update(double dt){
-        //TODO aufruf von delete und spawn Animation nur wennbedingung erfüllt ist
-        list.toFirst();
-        while(list.getContent()!=null){
+        T current=list.getContent();
+        while(list.getContent().getNext()!=current||list.getContent()!=current){
             T t=list.getContent();
-            t.deleteAnimation(dt);
-            t.spawnAnimation(dt);
-            list.next();
+            if(t.deleted) t.deleteAnimation(dt);
+            if(!t.arrived) t.spawnAnimation(dt);
+            if(list.getContent().next!=null) {
+                list.next();
+            }else{
+                list.toFirst();
+            }
         }
     }
 }
