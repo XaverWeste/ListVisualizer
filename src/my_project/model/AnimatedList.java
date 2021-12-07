@@ -56,6 +56,7 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
                     list.getContent().previous.setNext(null);
                 }
                 list.getContent().changePointer(false);
+                list.getContent().deleted=true;
                 list.remove();
             }
         }

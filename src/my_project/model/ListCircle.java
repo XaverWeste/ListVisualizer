@@ -6,10 +6,10 @@ import KAGO_framework.view.DrawTool;
 
 public class ListCircle extends ListObject implements AnimableList<ListCircle> {
 
-    private int r,g,b;
     private final ViewController viewController;
 
     public ListCircle(ListCircle previousBall, ViewController viewController){
+        arrived=deleted=false;
         if(previousBall!=null){
             x=previousBall.getX()+50;
         }else{
@@ -19,7 +19,6 @@ public class ListCircle extends ListObject implements AnimableList<ListCircle> {
         previous=previousBall;
         this.viewController=viewController;
         viewController.draw(this);
-        r=b=g=255;
         radius = 0;
     }
 
@@ -28,7 +27,7 @@ public class ListCircle extends ListObject implements AnimableList<ListCircle> {
             drawTool.setCurrentColor(150,150,0,255);
             drawTool.drawFilledCircle(x,y,radius+5);
         }
-        drawTool.setCurrentColor(r,g,b,255);
+        drawTool.setCurrentColor(255,255,255,255);
         drawTool.drawFilledCircle(x,y,radius);
         drawTool.setCurrentColor(0,0,0,255);
         drawTool.drawCircle(x,y,radius);
@@ -36,19 +35,6 @@ public class ListCircle extends ListObject implements AnimableList<ListCircle> {
 
     public void setPrevious(ListCircle newPrevious){ previous=newPrevious; }
     public void setNext(ListCircle theNext){ next=theNext; }
-    public void setColorBlack(){ r=g=b=0; }
-    public void setR(){
-        setColorBlack();
-        r=255;
-    }
-    public void setG(){
-        setColorBlack();
-        g=255;
-    }
-    public void setB(){
-        setColorBlack();
-        b=255;
-    }
     public void changePointer(){ isOnPointer=!isOnPointer; }
 
     public ListCircle getPrevious(){ return previous; }
@@ -65,19 +51,14 @@ public class ListCircle extends ListObject implements AnimableList<ListCircle> {
     public ListCircle getNext(){ return next; }
 
     public void update(double dt){
-        if(radius<20) radius+=5*dt;
+        if(radius>=20) arrived=true;
+        if(!arrived) radius += 5*dt;
         if(deleted){
-            if(isOnPointer){
-                if(next!=null) next.changePointer();
-            }
-            radius-=5*dt;
+            radius=radius-5*dt;
             if(radius<=0) viewController.removeDrawable(this);
-            if(next!=null) next.setPrevious(previous);
         }
     }
 
-
-    //TODO untere Methoden implementieren
     @Override
     public void deleteAnimation(double dt) {
 
