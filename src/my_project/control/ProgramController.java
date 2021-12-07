@@ -2,7 +2,6 @@ package my_project.control;
 
 import KAGO_framework.control.ViewController;
 import my_project.model.AnimatedList;
-import my_project.model.ListBall;
 import my_project.model.ListCircle;
 import my_project.view.InputReceiver;
 
@@ -27,21 +26,12 @@ public class ProgramController {
             list.addToList(to, new ListCircle(list.getlast(), viewController));
         }else{
             list.addToList(to, new ListCircle(null, viewController));
+            list.getList().toFirst();
         }
     }
 
     public void deleteBall(){
         list.deleteFromList();
-    }
-
-    public void setColor(String color){
-        if(!list.getList().isEmpty()&& list.getList().hasAccess()) {
-            switch (color) {
-                case "r" -> list.getList().getContent().setR();
-                case "g" -> list.getList().getContent().setG();
-                case "b" -> list.getList().getContent().setB();
-            }
-        }
     }
 
     public void changeListPointer(String to){

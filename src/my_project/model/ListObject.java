@@ -12,6 +12,8 @@ public class ListObject extends GraphicalObject {
 
     public void changePointer(){ isOnPointer=!isOnPointer; }
 
+    public void changePointer(boolean to){ isOnPointer=to; }
+
     public boolean isArrived() {
         return arrived;
     }

@@ -34,9 +34,6 @@ public class InputReceiver implements Interactable {
         switch (key){
             case KeyEvent.VK_A -> programController.addBall("List");
             case KeyEvent.VK_S -> programController.deleteBall();
-            case KeyEvent.VK_R -> programController.setColor("r");
-            case KeyEvent.VK_G -> programController.setColor("g");
-            case KeyEvent.VK_B -> programController.setColor("b");
             case KeyEvent.VK_Q -> programController.changeListPointer("toFirst");
             case KeyEvent.VK_E -> programController.changeListPointer("next");
             case KeyEvent.VK_W -> programController.addBall("current");
