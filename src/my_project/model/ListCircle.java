@@ -54,6 +54,7 @@ public class ListCircle extends ListObject implements AnimableList<ListCircle> {
         if(radius>=20) arrived=true;
         if(!arrived) radius += 5*dt;
         if(deleted){
+            if(!arrived) arrived=true;
             radius=radius-5*dt;
             if(radius<=0) viewController.removeDrawable(this);
         }
