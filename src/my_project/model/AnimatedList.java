@@ -65,7 +65,7 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
     }
 
     public void changeListPointer(String to){
-        if(list.getContent()!=null)list.getContent().changePointer();
+        if(list.getContent()!=null)list.getContent().changePointer(false);
         switch (to){
             case "toFirst" -> list.toFirst();
             case "next" -> {
@@ -76,7 +76,7 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
                 }
             }
         }
-        if(list.getContent()!=null) list.getContent().changePointer();
+        if(list.getContent()!=null) list.getContent().changePointer(true);
     }
 
     private void add(T newT) {

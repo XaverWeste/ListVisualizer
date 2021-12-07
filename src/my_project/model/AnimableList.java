@@ -29,8 +29,8 @@ public interface AnimableList<T> {
 
     T getNext();
 
-    boolean tryToDelete();
-
     void sounds(SoundController soundController);
+
+    boolean tryToDelete();
 
 }
