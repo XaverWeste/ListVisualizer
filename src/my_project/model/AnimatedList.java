@@ -88,6 +88,8 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
 
     public List<T> getList(){ return list; }
 
+
+    //TODO untere Methode funktioniert nicht
     public void update(double dt){
         T current=list.getContent();
         while(list.getContent()!=current){
