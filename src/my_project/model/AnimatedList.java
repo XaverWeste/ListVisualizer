@@ -28,10 +28,11 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
                 }
             }
             case "current" -> {
-                if(list.hasAccess()) {
+                if(lastInList!=null) {
                     newT.setNext(list.getContent());
-                    newT.setX(newT.getNext().getX());
-                    newT.setY(1000);
+                    if(list.getContent().getPrevious()!=null) list.getContent().getPrevious().setNext(newT);
+                    newT.setX(newT.getNext().getX()-50);
+                    newT.setY(list.getContent().getY());
                     list.getContent().setPrevious(newT);
                     if (newT.getPrevious() != null) {
                         newT.getPrevious().setNext(newT);

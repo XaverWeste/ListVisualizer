@@ -22,9 +22,9 @@ public class ProgramController {
     }
 
     public void addBall(String to){
-        if(list.getlast()!=null) {
+        if (list.getlast() != null) {
             list.addToList(to, new ListCircle(list.getlast(), viewController));
-        }else{
+        } else {
             list.addToList(to, new ListCircle(null, viewController));
             list.getList().toFirst();
         }
