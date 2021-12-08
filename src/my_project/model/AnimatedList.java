@@ -1,6 +1,5 @@
 package my_project.model;
 
-import KAGO_framework.control.SoundController;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.abitur.datenstrukturen.List;
 
@@ -8,7 +7,6 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
 
     private final List<T> list=new List();
     private T lastInList;
-    private final SoundController soundController=new SoundController();
 
     public AnimatedList(){
         list.toFirst();
@@ -87,23 +85,4 @@ public class AnimatedList <T extends ListObject & AnimableList<T>> extends Graph
     public T getlast(){ return lastInList; }
 
     public List<T> getList(){ return list; }
-
-
-    //TODO untere Methode funktioniert nicht
-    public void update(double dt){
-        T current=list.getContent();
-        while(list.getContent()!=current){
-            T t=list.getContent();
-            if(t.deleted) t.deleteAnimation(dt);
-            if(!t.arrived) t.spawnAnimation(dt);
-            t.sounds(soundController);
-            if(list.getContent()!=current) {
-                if (list.getContent().next != null) {
-                    list.next();
-                } else {
-                    list.toFirst();
-                }
-            }
-        }
-    }
 }

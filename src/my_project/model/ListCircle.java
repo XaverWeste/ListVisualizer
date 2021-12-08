@@ -1,6 +1,5 @@
 package my_project.model;
 
-import KAGO_framework.control.SoundController;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.view.DrawTool;
 
@@ -51,26 +50,20 @@ public class ListCircle extends ListObject implements AnimableList<ListCircle> {
     public ListCircle getNext(){ return next; }
 
     public void update(double dt){
-        if(radius>=20) arrived=true;
-        if(!arrived) radius += 5*dt;
-        if(deleted){
-            if(!arrived) arrived=true;
-            radius=radius-5*dt;
-            if(radius<=0) viewController.removeDrawable(this);
-        }
+        super.update(dt);
     }
 
     @Override
     public void deleteAnimation(double dt) {
-
+        if(!arrived) arrived=true;
+        radius=radius-5*dt;
+        if(radius<=0) viewController.removeDrawable(this);
     }
 
     @Override
     public void spawnAnimation(double dt) {
-
+        radius += 5*dt;
+        if(radius>=20) arrived=true;
     }
 
-    public void sounds(SoundController soundController){
-
-    }
 }

@@ -29,4 +29,20 @@ public class ListObject extends GraphicalObject {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+    /**
+     * muss in der unterklasse mit super aufgerufen werden
+     */
+    public void update(double dt){
+        if(!arrived) spawnAnimation(dt);
+        if(deleted) deleteAnimation(dt);
+    }
+
+    public void spawnAnimation(double dt){
+
+    }
+
+    public void deleteAnimation(double dt){
+
+    }
 }

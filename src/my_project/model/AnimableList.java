@@ -9,16 +9,6 @@ public interface AnimableList<T> {
 
     void update(double dt);
 
-    /**
-     * Wird in AnimatedList aufgerufen
-     */
-    void deleteAnimation(double dt);
-
-    /**
-     * Wird in AnimatedList aufgerufen
-     */
-    void spawnAnimation(double dt);
-
     void setPrevious(T newPrevious);
 
     void setNext(T theNext);
@@ -28,8 +18,6 @@ public interface AnimableList<T> {
     T getPrevious();
 
     T getNext();
-
-    void sounds(SoundController soundController);
 
     boolean tryToDelete();
 
