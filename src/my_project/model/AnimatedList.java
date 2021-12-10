@@ -12,13 +12,27 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
     private final List<T> list=new List();
     private final double xAbstand;
     private final double yAbstand;
+    private final double x;
+    private final double y;
     private T current;
+
+    public AnimatedList(double xAbstand,double yAbstand,double x,double y){
+        this.xAbstand=xAbstand;
+        this.yAbstand=yAbstand;
+        this.x=x;
+        this.y=y;
+        list.toFirst();
+    }
 
     public void append(T t){
         if(!list.isEmpty()) {
             list.append(t);
             t.setX(getPrevious(t).getX() + xAbstand);
             t.setX(getPrevious(t).getY() + yAbstand);
+        }else{
+            list.append(t);
+            t.setX(x);
+            t.setX(y);
         }
     }
 
@@ -33,6 +47,10 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
                 list.getContent().setX(getPrevious(t).getX() + xAbstand);
                 list.getContent().setX(getPrevious(t).getY() + yAbstand);
             }
+        }else{
+            list.append(t);
+            t.setX(x);
+            t.setX(y);
         }
     }
 
@@ -43,12 +61,6 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
                 list.remove();
             }
         }
-    }
-
-    public AnimatedList(double xAbstand,double yAbstand){
-        this.xAbstand=xAbstand;
-        this.yAbstand=yAbstand;
-        list.toFirst();
     }
 
     public void toFirst(){
