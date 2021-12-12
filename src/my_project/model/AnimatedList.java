@@ -42,11 +42,11 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
         if(!list.isEmpty()) {
             list.append(t);
             t.setX(getPrevious(t).getX() + xAbstand);
-            t.setX(getPrevious(t).getY() + yAbstand);
+            t.setY(getPrevious(t).getY() + yAbstand);
         }else{
             list.append(t);
             t.setX(x);
-            t.setX(y);
+            t.setY(y);
         }
     }
 
