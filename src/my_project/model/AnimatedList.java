@@ -60,16 +60,16 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
             toCurrent();
             list.insert(t);
             t.setX(getPrevious(t).getX() + xAbstand);
-            t.setX(getPrevious(t).getY() + yAbstand);
+            t.setY(getPrevious(t).getY() + yAbstand);
             while (list.getContent() != null) {
                 toCurrent();
                 list.getContent().setX(getPrevious(t).getX() + xAbstand);
-                list.getContent().setX(getPrevious(t).getY() + yAbstand);
+                list.getContent().setY(getPrevious(t).getY() + yAbstand);
             }
         }else{
             list.append(t);
             t.setX(x);
-            t.setX(y);
+            t.setY(y);
         }
     }
 
