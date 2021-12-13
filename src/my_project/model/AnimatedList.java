@@ -91,10 +91,8 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
      */
 
     public void toFirst(){
-        if(list.hasAccess()) {
-            list.toFirst();
-            current = list.getContent();
-        }
+        list.toFirst();
+        current = list.getContent();
     }
 
     /**
@@ -115,7 +113,6 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
 
     public void previous(){
         if(list.hasAccess()) {
-            toCurrent();
             list.toFirst();
             if(list.getContent()!=current) {
                 int i=0;
@@ -124,7 +121,7 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
                     i++;
                 }
                 list.toFirst();
-                for(int j=0;j<i;j++) list.next();
+                for(int j=0;j<i-1;j++) list.next();
                 current = list.getContent();
             }
         }
