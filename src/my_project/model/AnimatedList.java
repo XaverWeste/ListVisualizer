@@ -3,7 +3,8 @@ package my_project.model;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.abitur.datenstrukturen.List;
 
-public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList> {
+
+public class AnimatedList<T extends GraphicalObject & AnimatedList.AnimableList> {
 
     public interface AnimableList {
         /**
@@ -26,7 +27,7 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
      * @param y koordinate der ersten Objektes
      */
 
-    public AnimatedList(double xAbstand,double yAbstand,double x,double y){
+    public AnimatedList(double xAbstand, double yAbstand, double x, double y){
         this.xAbstand=xAbstand;
         this.yAbstand=yAbstand;
         this.x=x;
@@ -38,16 +39,18 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
      * hängt ein Objekt an die Liste an
      * @param t ist das neue Objekt das angehängt wird
      */
+
     public void append(T t){
-        if(!list.isEmpty()) {
-            list.append(t);
-            t.setX(getPrevious(t).getX() + xAbstand);
-            t.setY(getPrevious(t).getY() + yAbstand);
-        }else{
-            list.append(t);
-            t.setX(x);
-            t.setY(y);
-        }
+        if(t!=null)
+            if(!list.isEmpty()) {
+                list.append(t);
+                t.setX(getPrevious(t).getX() + xAbstand);
+                t.setY(getPrevious(t).getY() + yAbstand);
+            }else{
+                list.append(t);
+                t.setX(x);
+                t.setY(y);
+            }
     }
 
     /**
@@ -174,17 +177,35 @@ public class AnimatedList <T extends GraphicalObject & AnimatedList.AnimableList
 
     public T getPrevious(T t){
         list.toFirst();
-        if(list.getContent().equals(t)) {
+        if(!list.getContent().equals(t)) {
             int i=0;
-            while(list.getContent().equals(t)) {
+            while(!list.getContent().equals(t)) {
                 list.next();
                 i++;
             }
             list.toFirst();
-            for(int j=0;j<i;j++) list.next();
+            for(int j=0;j<i-1;j++) list.next();
             return list.getContent();
         }
         toCurrent();
         return null;
+    }
+
+    /**
+     *gibt zurück ob die List leer ist
+     */
+
+    public boolean isEmpty(){ return list.isEmpty(); }
+
+    /**
+     * setzt alle y Werte der Objekte in der List auf @param newY
+     */
+
+    public void updateAllY(double newY){
+        list.toFirst();
+        while(list.getContent()!=null){
+            list.getContent().setY(newY);
+            list.next();
+        }
     }
 }

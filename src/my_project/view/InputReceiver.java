@@ -3,6 +3,8 @@ package my_project.view;
 import KAGO_framework.control.Interactable;
 import KAGO_framework.control.ViewController;
 import my_project.control.ProgramController;
+import my_project.model.AnimatedList;
+import my_project.model.ListAnimation;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -13,7 +15,8 @@ import java.awt.event.MouseEvent;
  */
 public class InputReceiver implements Interactable {
 
-    private final ProgramController programController;
+    private final ProgramController p;
+    public ViewController v;
 
     /**
      * Objekterzeugung
@@ -21,8 +24,9 @@ public class InputReceiver implements Interactable {
      * @param viewController Nötig, um den Aufruf der Interface-Methoden sicherzustellen
      */
     public InputReceiver(ProgramController programController, ViewController viewController){
-        this.programController = programController;
+        this.p = programController;
         viewController.register(this);
+        v=viewController;
     }
 
     @Override
@@ -31,7 +35,9 @@ public class InputReceiver implements Interactable {
 
     @Override
     public void keyReleased(int key) {
-
+        AnimatedList list=p.getList();
+        if(key==KeyEvent.VK_A) list.append(new ListAnimation(false,v));
+        if(key==KeyEvent.VK_W) list.insert(new ListAnimation(false,v));
     }
 
     @Override
